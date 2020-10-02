@@ -1,0 +1,3146 @@
+ PreInterview Questions
+
+* JVM:
+    - is java virtual machine the jvm actually runs java byte code
+    .class files
+    - write once and run everywhere -> bytecode
+
+* JRE:
+    - is java runtime environment is what you need to run a java program
+    and contains a jvm among other things.
+
+* JDK:
+    - is java development kit -- the jdk is what you need to compile
+    java source code. java to .class file
+    - to program in java you will need jdk you can install JDK from
+    oracle website.
+-----------------------------------------------------------------
+* difference between Path and classPath?
+    - Path:
+         is used to define where the executables are .exe files
+         java.exe, javac.exe etc
+    - Class path:
+         is used to specify location of Java.class files
+
+    - java source code -> compile (javac) -> bytecode .class extension
+-----------------------------------------------------------------
+* versions of java you worked with?
+* what is the difference between Java 7 and 8?
+    - Version           Release         end public dates
+    - Java SE 7         2011
+    - Java SE 8         2014            january 2019, december 2020
+    - Java SE 9         2017            March 2018
+    - Java SE 10     20 March 2018            September 2018
+    - Java SE 11     25 September 2018
+    - Java SE 13     17 September 2019
+
+      JAVA 7              vs            JAVA 8 }
+    - String in                        - Lambda Expression
+    Switch statement                   - pipelines and Streams
+    - Multiple Exeception              - date and time API
+    Handling                           - Java 8 interface changes
+                                        Static Method, Default
+                                        Method
+-----------------------------------------------------------------
+* What is garbage collector and how many types?
+
+    - Automatic garbage collection is the process of looking at heap
+    memory identifying which objects are in use and which are not
+    and deleting unused objects
+    - An in use object or a referenced object means that some
+    part of your program still maintains a pointer to that
+    object
+
+    * Garbage Collectors
+        - serial : works with a single thread works for single
+                    threaded apps
+        - parallel: uses multiple threads for managing heap space
+        - CSM: (current mark sweep) uses multiple GC threads
+        - G1: is designed for application running on multiprocessor
+        machines with large memory space. breaks heap into smaller regions
+
+    * how to call Garbage Collector?
+        - System.gc();
+-----------------------------------------------------------------
+* Explain Public Static void main (String args[])
+    - public:
+            public is an access modifies which is used to specify who
+            can access this method. Public means that this method will be
+            accessible by any Class.
+    - static:
+            It is a keyword in java which identifies it is class bases i.e
+            it can be accessed without creating the instance of a class
+    - void:
+            it is the return type of the method void defines the method which
+            will not return any value
+    - main:
+            it is the name of the method which is searched by JVM as a
+            starting point for an application with a particular signature only.
+            it is the method where the main executions occurs
+    - String args:
+            it is the parameter passed to the main method
+-----------------------------------------------------------------
+* can one class call another class main method?
+    - yes a main method can be called in another class main method
+    - code will compile without main method but will not run
+-----------------------------------------------------------------
+* what are the primitives and wrapper classes?
+    - every primitive data type has a class dedicated to it
+    - these are known as wrapper classes because they wrap the primitive data type
+    into an object of that class.
+    - we can convert from one type to another using casting
+
+    * PRIMITIVE         * WRAPPER CLASS         * CONSTRUCTOR ARGUMENT
+    boolean             Boolean                  boolean or String
+    byte                Byte                     byte or String
+    char                Character                char
+    int                 Integer                  int or String
+    float               Float                    float double or String
+    double              Double                   double or String
+    long                Long                     long or String
+    short               Short                    short or String
+-----------------------------------------------------------------
+* implicit casting vs explicit casting?
+    - Implicit Casting:
+        int i = 100;
+        double d = i;
+
+    - Explicit Casting:
+        int n = 12;
+        byte b = (byte)n;
+
+    - Auto - Boxing
+        Integer num = n;
+
+    - Un - Boxing
+        int j = num;
+
+DONT WORK:
+            Integer i = new Integer(100);
+            double d = i ; // will not work
+
+-----------------------------------------------------------------
+* difference between Instance Variable and static Variable?
+    - Static Variables:
+                    belongs to the class itself not to objects
+                    of the class, different object can not have different
+                    values for a static variable. only one copy of static variable
+                    for everyone. Every object instance of a class has its own copy
+                    of each instance variable declared in the class
+
+-----------------------------------------------------------------
+* What is constructor in java
+* what is the difference between constructor and method?
+    - A constructor in java is a block of code similar to a method thats called
+    when an instance of an object is created. Difference between constructor and
+    method:
+        - A constructor doesnt have a return type
+        - the name of the constructor must be the same as the name of the class
+        - unlike methods constructors are not considered members of a class
+        - a constructor is called automatically when a new instance of object
+        is created
+        - the purpose of a constructor is to initialize the object of a class
+        while the purpose of a method is to perform a task by executing java code
+        - default constructor is added if programmer did not add a constructor.
+
+                                Types of Java Constructor
+                                        |
+                                        |
+                    ------------------------------------------
+                    |                                         |
+            default constructor                       parameterized constructor
+
+-----------------------------------------------------------------
+* Can a super() and this() keywords be in same constructor?
+    - public computer(){
+        this();
+        super();
+        //code
+    }
+    - NO they both need to be in first line within constructor.
+-----------------------------------------------------------------
+* Super. VS Super()
+    - super.
+            is used to access parent/super class members variables, methods
+    - super()
+            is used to call super class constructor
+
+* this. VS this()
+    - this.
+            this object by using this. we can access instance variables and
+            method. to differentiate between instance and argument variable
+    - this()
+            call a constructor from another constructor in same class
+
+    Example:
+        public class computer{
+            private String brand;
+
+            public computer(){
+                this("apple");
+            }
+            public computer (String brand){
+                this.brand = brand;
+            }
+        }
+-----------------------------------------------------------------
+* What is the difference between access modifiers in java?
+    Modifier       Class    Package     Subclass    World
+    - public         Y          Y           Y          Y
+    - protected      Y          Y           Y          N
+    - no modifier    Y          Y           N          N
+    - private        Y          N           N          N
+
+-----------------------------------------------------------------
+* what is static keyword in java?
+    - Static keyword means that the variable or method belongs to class
+      and shared between all instances.
+    - we can call static members by using class name or object
+    - static methods can not call/refer Non Static members
+    - Static can be: variables, method, block, inner class
+
+    public class Computer{
+        private String brand;
+        public Computer(){
+             this("Apple");
+             }
+        public Computer(String brand) {
+            this.brand = brand; }
+            public static class Memory{
+                private int ramsize;
+            }
+        }
+        Memory c = new Computer().new Memory();
+-----------------------------------------------------------------
+* Static block and instance initializer block?
+    - the static initializer block will be called on loading of the class and code
+      will run only once in the begining
+    - instance initializer block execute every time you create an object
+      for a class. before any constructor.
+
+    Example:
+        public class programer{
+            System.out.println("constructor")
+        }
+        static{
+            System.out.println("static")
+        }
+        {
+             System.out.println("instance ")
+        }
+
+-----------------------------------------------------------------
+* pass by value or pass by reference?
+    - Java is a “pass-by-value” language. This means that a copy of
+    the variable is made and the method receives that copy. Assignments
+    made in the method do not affect the caller.
+-----------------------------------------------------------------
+* final vs finally vs finalize()
+    - Final:
+            - final is a keyword
+            - final is used to apply restriction on class method and variable
+            - if a class is marked as final then this class can not be inherited
+              by any other class
+    - finally:
+            - finally is a block
+            - finally is a block which is used for exception handling along with
+              try and catch blocks
+    - Finalize:
+            - finalize() method is protected method of java.lang.object class
+              it is inherited to every class you create in java
+            - finalize() methos id used to perform some clean up operations
+              on a object before it is removed from memory
+
+-----------------------------------------------------------------
+* where did you use static in your framework?
+    - I normally write utility classes for better reusability and make
+      all methods in my utilities as static methods so that i can easily
+      call them by class name.
+    - dataseUtil class has static methods to connect and run queries and
+      get data
+-----------------------------------------------------------------
+* difference between equals method and "==" operator in java?
+    - "==":
+            reference and address comparison
+            == in case of primitives it is checking the value. as primitives are
+            single value without any behavior.
+    - equals()
+            content comparison
+
+-----------------------------------------------------------------
+* what is String pool?
+    - String Pool in java is a pool of Strings stored inJava Heap Memory. Used to
+      save space in memory.
+-----------------------------------------------------------------
+* how to reverse String in java?
+    1:
+        String string="whatever";
+        String reverse = newStringBuilder(string).reverse().toString();
+        System.out.println(reverse);
+    2:
+        String result="";
+        for(int i = string.length()-1; i>=0; i--){
+            result = result+ string.charAt(i);
+        }
+        System.out.println(result);
+
+-----------------------------------------------------------------
+* how to reverse a sentence word by word?
+    StringBuilder stringBuilder = new StringBuilder();
+    String [] words = string.split(" ");
+    for(int j = words.length-1; j>=0; j--){
+        stringBuilder.append(words[j].append("");
+    }
+    System.out.println("reverse Words "+ stringBuilder.toString().trim());
+
+-----------------------------------------------------------------
+* String vs StringBuilder vs StringBuffer?
+                STRING          STRINGBUFFER             STRINGBUILDER
+Storage         constant        HEAP                    Heap
+Area            String pool
+
+Modifiable      no(inmutable)   YES(mutable)            YES(mutable)
+
+Thread Safe     YES             YES                     NO
+
+Performance     FAST            VERY SLOW               FAST
+
+Inmutable means values can not be changed once its created:
+
+-----------------------------------------------------------------
+* what is Tread-safe or Synchronized?
+    - what is tread: A sequential or single threaded program has single flow
+    - synchronized: Means that two threads can not execute the method
+      or access the variables at the same time and the JVM takes care of
+      enforcing that. it is used to achieve thread-safety
+-----------------------------------------------------------------
+* how to check if String is palindrome?
+    - civic = civic <- is a palindrome
+    - public static boolean isPalindrome(String str){
+        if(str==null)
+        return false;
+        StringBuilder strBuilder = new StringBuilder(str);
+        strBuilder.reverse();
+        return strBuilder.toString().equals(str);
+    }
+-----------------------------------------------------------------
+* what is singleton class and how can we make a class singleton?
+    - Ensures that a class has only one instance and provide a global point
+    of access to it
+    public class SingletonExample{
+    // static member holds only one instance of the singleton class
+      private static singletonExample singletonInstance;
+
+    // singleton prevents any other class from instantiating
+      private SingletonExample(){
+      }
+    }
+
+Example:
+
+    - Singleton Example in Java
+      public class dbaseConnector{
+          private static final dbaseConnector instance = new DbaseConnect();
+
+          private dbaseConnector(){
+              //construction code ....
+          }
+          public static DbaseConnector getInstance(){
+              return(instance);
+          }
+      }
+
+-----------------------------------------------------------------
+* what is armstron ?
+-----------------------------------------------------------------
+* how to prevent Instantiation of a class?
+    - private constructor
+    - abstract class
+-----------------------------------------------------------------
+* what are OOP concepts in Java?
+    - encapsulation
+    - inheritance
+    - abstraction
+    - polymorphism
+
+-----------------------------------------------------------------
+* what is encapsulation and how did you use it?
+    - data: hiding by making variables private and providing public
+      getter and setter methods.
+    - in my project i created multiple POJO/BEAN classes in order to manage
+      test data and actual data.
+
+    EX: I take JSON from API response and convert to object of my POJO
+      class all variables are private with getters and setter.
+-----------------------------------------------------------------
+* What is inheritance and benefits of it?
+    - inheritance is a process when a sub class inherits members from super class.
+      All public and protected and sometimes default members are inherited to
+      sub class.
+    - we will achieve code re-usability and code organization with it. also
+    very useful for polymorphic programing.
+    - test base is super class and other test classes are sub classes.
+
+    EX: we had a page object for one page and as another page contained same
+    elements i used inheritance in order to reuse the elements defined in super page
+    object class in selenium webdriver.
+-----------------------------------------------------------------
+* what is abstraction in java and purpose?
+    - in General using abstraction in programing we can create a base/blueprint
+    for our code and let sub classes implement as needed according to requirements
+
+    hiding the implementation and showing only behavior
+
+    abstract class can have a constructor
+
+    2 ways to achieve abstraction in JAVA:
+    1) Abstract Classes
+    2) interfaces
+-----------------------------------------------------------------
+* difference between Abstract class and interface?
+    - difference between abstract class and interface in java
+    - types of methods: interface can have only abstract methods. abstract
+    class can have abstract and non abstract methods. from java 8 it can have default
+    and static methods also.
+    - final variables: variables declared in java interface are by default final.
+    an abstract class may contain non final variables
+    - a class can implement multiple interfaces, but it can exted only single
+    abstract class. java does not support multiple inheritance
+    - methods
+            - in interface: abstract static defaults,
+            - in abstract class: abstract non-abstract static
+    - abstract class can have a constructor
+      interface can not have a constructor
+    - interface can extend other interfaces(multiple)
+-----------------------------------------------------------------
+* why java does not support multiple inheritance?
+    -
+-----------------------------------------------------------------
+* Difference between overloading and overriding?
+Overloading allows different methods to have same name, but different
+signatures where signature can differ by number of input parameters or
+type of input parameters or both. Overloading is related to compile time
+(or static) polymorphism.
+
+    1: overlaoding = same method name but different parameters
+       overloading = return type can be different
+
+    2: overriding = same type or sub type
+       overriding = same method name and same paramethers
+
+
+
+-----------------------------------------------------------------
+* Can you override a static method?
+    - No static methods can not be overriden, they can only be
+      hidden.
+-----------------------------------------------------------------
+* What is static binding vs dynamic/runtime binding?
+    - Static binding is overloading and
+    - dynamic binding is method overriding.
+-----------------------------------------------------------------
+* What is polymorphism ? where did we use it on framework?
+    - Polymorphism is the ability of an object to take on many forms.
+      The most common use of polymorphism in OOP occurs when a parent
+      class reference is used to refer to a child class object.
+
+        - DYNAMIC POLYMORHISM - OVERRIDING
+        - STATIC POLYMORHISM - OVERLOADING
+-----------------------------------------------------------------
+* Data Structures and Why we need it
+    - Data structures are way of organizing data for efficient
+      manipulation: Insertion , searching, reading , deletion of
+      data.
+
+    - I always use java data structures for reading data and storing
+      data from our application , database, or API.
+-----------------------------------------------------------------
+* How do you create an Array or dynamic array?
+    - int [] nums = new int [7];
+      nums [0] = 100;
+      nums [1] = 100;
+      nums [2] = 100;
+      nums [3] = 100;
+      nums [4] = 100;
+      nums [6] = 100;
+
+    - Java does not support dynamic Arrays
+      You have to use ArrayList for dynamism.
+-----------------------------------------------------------------
+* How to read unique values from Array?
+    - int [] nums = new int [7];
+    nums [0] = 44;
+    nums [1] = 32;
+    nums [2] = 100;
+    nums [3] = 100;
+    nums [4] = 7;
+    nums [5] = 7;
+
+    public static void main (String[] args){
+// 1st way
+        int [] nums = new int [6];
+        nums [0] = 44;
+        nums [1] = 32;
+        nums [2] = 100;
+        nums [3] = 100;
+        nums [4] = 7;
+        nums [5] = 7;
+
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
+            set.add(nums[i]);
+        }
+        System.out.println(set);
+// 2nd way
+        String uniqNums="";
+        for (int n:nums) {
+            if (!uniqNums.contains(String.valueOf(n)))
+                uniqNums = uniqNums+n+" ";
+        }
+        System.out.println(uniqNums);
+    }
+-----------------------------------------------------------------
+* How to print unique values from String?
+    -
+     public static void main (String[] args){
+
+        String str = "aaabbcccdddeereeegggg";
+        // 1st print only unique values from string
+        Set<Character> setC = new HashSet<>();
+        for (int i = 0; i < str.length(); i++) {
+            setC.add(str.charAt(i));
+        }
+        System.out.println(setC);
+        // 2nd print only unique values from string
+        String unique ="";
+        for (int i = 0; i < str.length(); i++) {
+            if(!unique.contains(str.charAt(i)+"")) {
+                unique += str.charAt(i);
+            } }
+        System.out.println(unique);
+    }
+}
+
+-----------------------------------------------------------------
+* difference between array and arraylist?
+    - Array is fixed size ArrayList is dynamic
+    - Array can store primitive type ArrayList only wrapper types and Objects
+    - Array can be multi-dimensional ArrayList is not
+    - Array is faster and ArrayList is slower
+-----------------------------------------------------------------
+* what is Iterator and difference between for each loop?
+    - Iterator works with arrayList and not array. It will help us
+      Iterate through the elements.
+    - Difference is with iterator you can make changes(remove item)
+      to the list while iterating.
+      within for each loop we can not make changes to our list
+
+// for each loop:
+
+      int arr[] = {23,54,6,56,76,878,9};
+           for(int n : arr) {
+                System.out.println(n);
+}
+           System.out.println("================");
+
+           List<Integer> list = new ArrayList<>();
+           list.add(23);
+           list.add(2323);
+           list.add(2312);
+           list.add(2343);
+           list.add(2553);
+
+// Iterator loop:
+
+           Iterator<Integer> it = list.iterator();
+           while(it.hasNext()) {
+                Integer n = it.next();
+                System.out.println(n);
+                it.remove();
+           }
+           System.out.println(list);
+           System.out.println("================");
+           for(Integer n : list) {
+                System.out.println(n);
+                //list.remove(n);
+}
+-----------------------------------------------------------------
+* How to join 2 arrays into single array?
+    - I am sure there are different ways to solve this solution I
+      am coming up at at this point is:
+
+    1. I would create a thrid a array with the size of
+    2. other other arrays and assign each value from Both arrays
+       into a 3rd array using a loop.
+    3. I can create an array list and loop through each Item in
+       2 arrays and add them to arraylist,
+       Then I can convert Arraylist into array if needed.
+
+
+-----------------------------------------------------------------
+* List vs Set vs Map interfaces
+    - LIST: - can store duplicate values,
+            - maintains /keeps the insertion order
+            - list allows any number of null values
+            - Comes from collection interface
+            - from list we can read a certain value by index
+    - SET : - can only store unique values.
+            - set does not maintain order
+            - set allows only 1 null
+            - Comes from collection interface
+            - set doesnt allow that
+
+    - MAP : is a key+value format and keys are always unique
+            - map read value by passing key
+            - map can have single null key but multiple null values
+-----------------------------------------------------------------
+* what is hashcode and equals method used for?
+    - I created multiple POJO(Plain old Java object) classes
+      to store data that came from different sources.
+      Like Database, API JSon format, Excel, CSV file, Webtable.
+
+    - And whenever I needed unique set of pojos, I had to override
+      hashCode and equals methods, that by storing into HASHSET ,
+      I was sure that only unique objects are being stored.
+
+    - Any challenges you had and how did you solve them?
+      When did you have to override hashCode and equals methods?
+      In my project, I had to validate data from web-tables, database, JSON ,
+      Excels etc. As they all come in different formats, It was challenging
+      to work with them and assert that they are correct and exptected.
+      So What I did was I created multiple POJOs to match my app data.
+      And sometimes, I need unique POJO objects, I override hashCode and equals methods.
+
+    - How did you use data structures in automation?
+      In my project, I had to validate data from web-tables, database, JSON ,
+      Excels etc. As they all come in different formats, It was challenging to
+      work with them and assert that they are correct and exptected.
+      So I stored all data from different sources into Java Data structures.
+      like Lists, Maps etc. and compared/asserted to expected.
+
+    = Example:
+        Employee emp1 = new Employee(100);
+        Employee emp2 = new Employee(100);
+        Employee emp3 = new Employee(110);
+        System.out.println(emp1.equals(emp2));
+
+        Integer i1 = new Integer(100); Integer i2 = new Integer(100);
+        System.out.println(i1.hashCode());
+        System.out.println(i2.hashCode());
+        Set<Employee> set = new HashSet<>(); set.add(emp1);
+        set.add(emp2);
+        set.add(emp3);
+        System.out.println(set.size());
+
+        class Employee {
+        private int id;
+        public Employee(int id) { this.id=id;
+        }
+        public int getId() {
+        return id;
+        public void setId(int id) {
+        this.id = id;
+        } }
+        @Override
+        public int hashCode() { return id;
+        }
+        @Override
+        public boolean equals(Object other) {
+        return this.id == ((Employee)other).id;
+        }
+-----------------------------------------------------------------
+* How do you sort an object that you created?
+    - I implement Comparable interface and override compareTo method.
+    Then whenever I store my objects into a List then use Collections.Sort
+    it will be able to sort. Also I can store my objects into a TreeSet or TreeMap.
+
+    public static void main (String[] args){
+
+        Employee emp1 = new Employee(500);
+        Employee emp2 = new Employee(100);
+        Employee emp3 = new Employee(110);
+        List list = new ArrayList<>();
+        list.add(emp1);
+        list.add(emp2);
+        list.add(emp3);
+        Collections.sort(list);
+        for (Object object : list) {
+            System.out.println(object);
+        }
+    }
+
+}
+class Employee implements Comparable<Employee>{
+    private int id;
+    public Employee(int id) {
+        this.id=id;
+    }
+    public int getId() {
+        return id; }
+    public void setId(int id) {
+        this.id = id;
+    }
+    @Override
+    public int hashCode() {
+        return id;
+    }
+    @Override
+    public boolean equals(Object other) {
+        return this.id == ((Employee)other).id;
+    }
+    @Override
+    public int compareTo(Employee emp) {
+        if(this.id > emp.id) {
+            return 1;
+        }else if(this.id < emp.id) {
+            return -1;
+        }
+        return 0; }
+    @Override
+    public String toString() {
+        return id+"";
+    }
+}
+-----------------------------------------------------------------
+* ArrayList vs LinkedList
+    - Arraylist is ordered collection like array.
+    - linkedList consists of nodes:
+        1: Singly Linked Linked List
+        value + pointer to next node
+        2: doublyLinked LinkedList:
+        Value + pointer to previous node and pointer to next node
+
+-----------------------------------------------------------------
+* ArrayList vs Vector?
+    - They both implement List Interface and maintains insertion order
+    - ArrayList
+        - is not synchronized
+        - its fast because its not synchronized
+    - Vector
+        - is synchronized
+        - slow because its synchronized
+-----------------------------------------------------------------
+* HashSet vs HashMap
+    - HashSet stores unique elements
+    - HashSet implements Set
+    - HashSet stores Single Objects
+
+    - HashMap stores unique keys, and duplicated values
+    - HashMap implements Map
+    - HashMap stores Key, Value paired objects
+-----------------------------------------------------------------
+* Hashtable vs HashMap
+    - Both key + value
+    - both implement MAP
+    - HashMap: Not Synchronized, only 1 null key and multiple null values
+    - Hashtable: its synchronized, no null keys or values
+-----------------------------------------------------------------
+* Stack vs Queve
+    - queve: first in first out
+    - Stack: last in first out
+--------------------------------------------------------------
+* treeset vs TreeMap
+
+Major difference between TreeSet and TreeMap is that TreeSet
+implements Set interface while TreeMap implements Map interface
+in Java. ... TreeSet stores only one object while TreeMap uses
+two objects called key and Value. Objects in TreeSet are sorted
+while keys in TreeMap remain in sorted Order.
+
+    - TreeSet: Can contain only unique values
+    - is sorted in ascending order
+    - TreeMap: can contain only unique keys.
+    - keys are sorted in ascending order
+-----------------------------------------------------------------
+* Exception handling in java?
+    - Depending on situation, we can use try catch finally blocks.
+
+        TRY : Code that might throw some exception
+
+        CATCH: We define exception type to be caught
+        And what to do if exception happens in TRY block code
+
+        FINALLY: Code that always runs , regardless if there is Exception or no.
+
+        FINALLY block: WILL NOT RUN if JVM crashes, or System.exit(0) Is present
+        in try or catch blocks. Clean up code, to close some connections, close
+        open files etc
+
+        example:
+        public static void testCatch() {
+            try {
+               int i = 4/0;
+            }catch(Exception e) {
+               return;
+            }finally {
+               System.out.println(“FINALLY!”);//will run
+            }
+  }
+--------------------------------------------------------------
+* What is the parent of all exceptions?
+    - Throwable class is parent
+
+-----------------------------------------------------------------
+* What types of Exeception do you know?
+
+    - CHECKED -> You handle or declare, otherwise will Not compile.
+    - UNCHECKED -> Subclasses of RUNTIMEEXCEPTION. And optional to handle or no.
+--------------------------------------------------------------
+* what is throw vs throws
+    -THROW VS THROWS:
+      THROW : -> CREATES AN EXCEPTION OBJECT
+      throw new RuntimeException();
+      THROWS -> goes to method signature, And declares that a method
+      might throw And exception
+-----------------------------------------------------------------
+* Types of exceptions you faced in your project
+    -
+    JAVA : NULLPOINTER EXCEPTION, ILLEGALARGUMENT, CLASSNOTFOUND,
+    FILENOTFOUND, CLASSCAST, ARITHMETIC, INDEXOUTOFBOUNDS,.. SQLEXCEPTION, IOEXCEPTION
+
+    SELENIUM: NOSUCHELEMENT, STALEELEMENT, NOTCLICKABLE, NOTVISIBLE,
+    TIMEOUTEXEPTION, WEBDRIVER, ILLEGALSTATE EXP, NO SUCHWINDOW, ALERTNOTFOUND...
+
+    CUCUMBER: PENDINGEXCEPTION, DUPLICATE METHOD IMPLEMENTATION EXP,
+--------------------------------------------------------------
+
+=========================================================================
+============================= SELENIUM ==================================
+=========================================================================
+
+ May 10th, 2018
+Boot CAMP
+==== SELENIUM REVIEW ====
+
+SELENIUM GRID:                                                node
+
+    YOU HAVE YOUR CODE --> REMOTE DRIVER -> SELENIUM HUB  ->  node
+
+                                                              node
+    EXAMPLE: WebDriver driver = new RemoteWebDriver( , )
+
+
+* SauceLabs
+    - they provide testing in cloud
+
+* Selenium Grid
+    - Gives you avility to run your automated tests in different browsers
+    and versions and operating systems.
+    - open source tool that is part of Selenium Suite
+
+* what is test automation and what are the benefits?
+	- no human interaction
+	- fast
+	- reliable
+	- scalable
+	- data driven testing
+
+* what can be automated?
+	- Something stable
+	- Smoke / sanity test
+    - functional test
+    - Test data creating
+    - API
+    - Database
+
+* what Test case should be automated?
+    - must be stable test case
+    - should be repetitive, can be used more than once
+    - should not need any human interaction
+    - should have a value, High ROI
+
+* What are the common test automation tools?
+    - Watir, selenium, UFT
+
+* What is SELENIUM?
+    - selenium is a tool that automates browser, it is used
+    for testing
+
+* Advantages of selenium?
+    - Open source
+    - interact with web application
+    - supports multiple browsers, operating systems
+    - supports different languages
+    - reusability
+    - community
+
+* Disadvantage of Selenium?
+    - it only supports web applications
+    - no official support / no help desk
+    - can not work with graphics, capchas, bar codes, shapes
+    - no built in reporting tool
+    - hard to master requires developer level knowledge
+    - hard to write good locators
+    - hard to synchronize
+
+* what we dont do in selenium?
+    - performance, load, stress testing, manual, ad hoc testing
+    usability pure database testing (if we only test the db it self)
+    , unit tests.. we dont do it. look and feel based testing
+    color shapes static testing.
+
+* what is a locator in selenium?
+    - in selenium locator is a means of finding a element in html
+        - ID
+        - name
+        - css
+        - Xpath
+        - tagName
+        - className
+        - linkText
+        - partialLinkText
+* what is xpath?
+    - is one of the locators in selenium
+
+* what is difference between Absolute and Relative Xpath?
+    - Absolute:
+        - Starts with /, starts looking from the root
+        element of the html document
+    - Relative:
+        - Starts with // looks for element in any part of
+        the page
+
+* In which situations are you going to use Xpath?
+    - when we can not use unique information such as ID, name,
+    tags, class ..
+    - when dealing with dynamic elements: id changes every time
+    we can use contains, starts-with, ends-with
+    - when we deal with indexes
+    - when we search by text: //span[.= 'submit']
+    - when tables xpath can handle parents child sibling
+
+* how do you choose locators?(whats the best locator)
+    - it depends on the situation on the web site, on the application
+    - If there is ID on web site yes, if no ID then Name,
+    - if it is a link:
+                    - linktext
+                    - partiallinktext
+                    - then others
+    - if its not a link:
+                    - Id
+                    - name
+                    - tagname
+                    - class
+                    - css : easy to read and write, fast
+                    - Xpath
+
+* css vs Xpath?
+    - css:
+        - fast easy to read and write, should be used if both
+        css and xpath are options.
+        - does not support index
+        - does not support text
+    - Xpath:
+        - works with text
+        - supports index
+        - xpath has more convination so its powerful but it can get ugly.
+
+* what is implicit wait / explicit wait?
+    - Implicit wait:
+                - Syntax: driver.manage.timeouts.implicitlyWait(5)
+
+                - set once always works if it doesnt find element
+                it will wait for 5 seconds otherwise it complains
+                applies every time when findelement/s method runs
+
+                - The implicit wait will tell to the web driver to
+                wait for certain amount of time before it throws a
+                "No Such Element Exception".
+
+    - Explicit wait:
+                - sometimes we need to wait for certain event
+                such as element is visible, clickable, enabled..
+                - WebDriverWait,
+                - ExpectedConditions
+                timeoutexception
+
+
+    - FluentWait:
+                - is also a type of explicit wait. Using fluent wait
+                we can customize the webDriverWait
+
+    -
+
+* what is difference between Assert and Verify?
+    - Assert:
+            -  if it fails test execution stops
+
+    - Verify:
+            - verify if it fails you make a note and continue with
+            the test
+
+* whats difference between QUIT and CLOSE?
+    - Quit:
+        - closes the windows
+
+    - Close:
+        - closes the current tab/window
+
+* how selenium handles drop downs?
+    - select class is used to deal with drop down list in selenium.
+    to create a select object we need to pass a webElement as
+    constructor. that element must have the select tag
+
+    - select by Index: Takes a int param, selects based on the index
+    0 based.
+    - select by visible text: takes a string, select based on the
+    text displayed.
+    - select by value: takes a string parameter selects based on
+    the value attribute of the option
+
+    - example: WebElement element = driver.findelement(by.id"dropdown")
+    Select list = new Select (element)
+    list.getFirstSelectedOption;
+
+* how to check the multiple selected value in dropdown?
+    - select carsList = new Select(el)
+    - carList.getSelectedOption(): returns the selected option
+    a list(List<WebElement>)
+    - carList.getFirstSelectedOption  <- method that returns
+    the selected option(the webElement)
+    - asserEquals("Wooden Spoon", carList.getFirstSelectedOption().getText())
+
+* how do you verify all options in dropdown?
+    - Select stateList = new Select(el)
+    - stateList.getOptions(): returns all the available options
+    selected or not
+
+* how to work with dropdown without the select tag?
+    - if they dropdown list has no select tag we can not use the
+    select class
+    - thread the dropdown list and its options as separate
+    elements locate every element separately
+    - the select an option: 1 find and click
+
+* What is the syntax for switching frame?
+    - its html page inside html page / we have to treat them as
+    different pages.
+
+    - Iframe/frame : tags for frames. Frame is a html document
+    inside another html document.
+    - Web driver handles one page at a time to control another frame
+    we always need to switch
+
+    - driver.switchTo.frame() : takes webElement -> find the iframe
+    and pass it as a param.
+
+    - driver.switchTo.frame() : takes String -> find the id or
+    name of the iframe and pass as param
+
+    - driver.switchTo.frame() : takes int -> find the index and pass
+    as param
+
+* what is the syntax for switching windows?
+    - to handle separate tabs/ windows we have to switch
+    to that tab
+    - web driver handles one page html document at a time. to
+    control another tab we always need to switch
+    - to be able to switch we need to get the window handle first
+    using getWindowHandesl() method
+    - driver.switchTo.window() : takes a string -> window handle
+    - for each : driverGetWindowHandles:
+        driver.switchTo.window("title")
+        if driver.getTitle == expected title
+            break;
+    - selenium needs the windows handle to switch tabs it doesn not
+    use the title. to switch using title we still switch using the
+    window handle first then check the title.
+
+* What operations can you do using actions class?
+    - Actions class lets us do advanced mouse and keyboard
+    operations.
+    - Hover over element / move to element
+    - scroll up/down
+    - double click
+    - right click
+    - drag and drop
+    - keyboard conbinations
+
+* what is the syntax for double click actions?
+    - perform any actions against an web element using actions class
+    we need to locate the element first
+        WebElement el = driver.findElement
+        Actions actions = new Actions(driver)
+        actions.doubleClick(el);
+
+        actions.moveTO(el)
+        actions.doubleClick
+
+* what is the syntax for uploading a file?
+    - in order to upload file using selenium  we need to locate
+    the upload button in html. the element will have tag
+    input then we do sendKeys by passing the path to file
+    which
+        WebElement upload = driver.findElement
+        upload.sendKeys("C:/user/me/file.txt")
+
+* sometimes sendKeys path does not work
+    - you have to use the robot or autoid
+    - to fix you have to build a dynamic path for file inside
+    our project
+    - path of the file in the project :
+    String projectDir= System.getProperty("usr.dir")
+    path of the file in the project :
+    "src/test/resources/test_data/myfile.txt"
+    - Element.sendKyes(projectDir+file)
+
+* have you done any cross browser testing?
+    - yes
+    - always mention that you have a control file for keywords
+    like browserType main url password username enviroment.
+
+* have you done any headless browser testing?
+    - its a browser that does not open it runs as a background service
+    or program. They are fast
+    - html unitdriver: headless browser that comes from selenium
+        webdriver driver = new hemlUnitDRiver();
+    - phanthomjsDriver: third party driver
+        webdriver driver = new htmlUnitDriver();
+    - taking screenshots will still work with headless browser
+
+* how you resolve certification issue?
+    - IF you are using CHROME, Internet Explorer
+        DesiredCapabilities capability = DesiredCapabilities.chrom();
+        capability.setcapability(capability.ACCEPT_SSL_CERTS, true );
+        System.setProperty("webdriver.chrome.driver","E:/chromedriver.exe")
+        driver = new ChromeDriver(capability);
+    - more examples badssl.com
+
+* How will do you performance Stress Security SQL injection testing?
+    - selenium engineer does not do any of these tests. these tests are done by
+    experts trained in these tools.
+
+* how do you handle Js alerts?
+    - if the alert on the browser comes from javaScript we use the Alert Class.
+    - Alert alert = driver.switchTo.alert();
+    - alert.accept();
+    - alert.dismiss();
+    - alert.sendkeys();
+
+* how you handle browser popup?
+    - Treat it as another webElement to close find the cancel link
+    to the x icon and click();
+
+* how you handle windows/OS pop ups?
+    - using the robot or the AutoIT
+
+* Verify element is not displayed?
+    - element = driver.findElement()
+    - element.isDisplayed();
+    - driver.findElement().isDisplayed() -> this line will throw exeption if the element
+    is not in the html
+         try{
+             find
+             return if displayed
+         }
+         Catch(element not fund)
+         {return true}
+
+* Why I can not find element?
+    - locator changed
+    - there is an iframe
+    - waiting time : page is loading slowly
+    - element is dynamic : locator can not find it
+    - page is not fully loaded/opened
+    - page changes and that element does not exist anymore
+
+===============================================================================
+May 12th 2018
+SELENIUM BOOTCAMP
+
+--------------------------------------------------------------------------
+Verify text exists?
+
+* using xpath. write xpath for text
+
+    Xpath for finding any element with certain / exact text:
+
+    //*[.='text']
+
+    Xpath for finding any element that contains certain text:
+
+    //*[contains(text(),'note')]
+
+    getPageSource() -> all the html of the ..
+
+--------------------------------------------------------------------------
+
+how do you handle StaleElementExceptions?
+    - we can get stale element exception when the element we want to interact with
+    is reloaded the webelement we located earlier  does not exisit in the DOM.
+    we need to wait until the javascript or the AJAX process to end the locate the
+    element again
+
+    example:
+            counter = 0;
+            while (counter < 5 ){
+                try {
+                    find and click
+                    break;
+
+                    }catch(staleelementexcetion)
+                    wait 1 sec
+                    counter ++
+            }
+==========================================================================
+============================== SQL AND REST =============================
+==========================================================================
+
+
+ May 11th, 2018
+
+SQL and REST
+----------------------------------------------------------------------------------------
+When you talk about your framework mention this frameworks:
+
+        Page Object model framework
+        cucumber Bdd framework
+        TestNG based
+        Data Driven framework
+
+ ( comes from QTP / UFT style) <- do not mention much because its mostly UFT
+        Hybrid Framework
+        Keyword Driven Framework
+
+** Tell me about your self SQL **
+
+        I am confortable with front end test automation using java and selenium
+        WebDriver, Cucumber, Maven, Testng, Junit also i am good at restful API
+        test automation using postman and restassured library in JAVA. I have rich
+        experience with database test automation using sql queries along with JDBC library
+        in JAVA.
+
+----------------------------------------------------------------------------------------
+* data driven Testing ?
+    - data driven framework when do we do it?
+
+    - When: Whenever a functionality  or a module in an app requires testing with
+            multiple sets of data(also called parametrization)
+            multiple imputs then we need to perform data driven testing and automation.
+            these scenarios are one of the things that must be automated.
+
+    - How: Test data is separated from code and stored into external sources. Excel files,
+            CSV files, Database.
+
+    BENEFIT: more organized data centralized collaboration on test data it can come with
+            BA, MTs, ETC
+
+----------------------------------------------------------------------------------------
+* how to read data from excel?
+    - I use Apache POI to read data from excel or any excel related tests
+
+        EXAMPLE:
+        String file = "TestData.xlsx";
+        FileImputStream inStream = new FileInputStream(file);
+
+        String filePath = "C:\\user\\alex\\Desktop";
+        FileInputStream instream = new FileInputStream(filePath);
+        Workbook workBook = WorkbookFactory.create(inStream);
+        Sheet worksheet = workBook.getsheet(0);
+        Row row = workSheet.getRow(0);
+        Cell cel = row.getCell(0);
+        System.out.println(cell.toString());
+
+        WRITE DATA:
+                CENTRAL MAVEN REPO -> WE ARE USING
+                COMPANY MAVEN REPO -> YOU USE AT WORK
+
+
+----------------------------------------------------------------------------------------
+* read Data From Database?
+        - Manually: Oracle  SQL developer <- for manually testing
+        - Automation: JDBC -> JAVA DATABASE CONNECTIVITY <- is used for automation
+
+
+        Hierarchy of Objects:
+                                CONNECTION -> STATEMENT -> RESULTSET
+        HOW TO STABLISH CONNECTION:
+                                Connetion conn = DriverManger.getConnection("URL","username","password")
+                                Statement stat = connection.createStatement(ResultSet.TYPE_...)
+                                ResultSet resu = statement.executeQuery("select * from employees");
+
+        - test data is separted from code ..
+
+        - if the amount of data is not that huge then i use cucumber scenario outline with example
+        table
+
+        - and other times i maintain test data in excel files and i use apache POI library
+        to read and write data using JAVA
+
+        - if data comes from a database or i need to do datase validiation
+        i use sql queries along with JDBC library in java
+
+----------------------------------------------------------------------------------------
+* where do we close connection in database in try catch block
+in case we will get exeption thrown. " in catch block"
+
+    1) in finally block
+    2) i use try-with-resources and it will automatically close
+
+        Example 1: in fanally block
+
+                try{
+                        Connetion conn = DriverManger.getConnection("URL","username","password")
+                        Statement stat = connection.createStatement(ResultSet.TYPE_...)
+                        ResultSet resu = statement.executeQuery("select * from countries");
+                }catch(SQLException e){
+                        //some code to report
+                        e.printStackTrace();
+                }finally{
+                        try{
+                        result.close();
+                        statement.close();
+                        connection.close();
+                        }catch(exception e){
+                                // some code
+                        }
+                }
+
+        Example 2: try-with-resources
+
+        any class or interface that extends closable or autoclosable interface
+
+
+                try(
+                        Connetion conn = DriverManger.getConnection("URL","username","password")
+                        Statement stat = connection.createStatement(ResultSet.TYPE_...)
+                        ResultSet resu = statement.executeQuery("select * from countries");)
+                {
+                        //some code to read data from resulset
+                }
+                }catch(SQLException e){
+                        //some code to report
+                        e.printStackTrace();
+                }
+
+----------------------------------------------------------------------------------------
+* have you done any BACK END TESTING or DATABASE TESTING?(they mean API and Database)
+
+        - Yes I have lots of experience with working with databases and
+          I am confortable with writing SQL queries. I have experience with working on relational
+          databases like ORACLE, MySQL, SQL Server.
+
+        - Have you worked with non-relational databases?
+                - I dont have hands on experience i know that its is like JSON
+                  format database and i have good experience with working with JSON
+                  files. And I am quick learner and crosfunctional.
+
+----------------------------------------------------------------------------------------
+* how do you create a table in SQL what are constraints?
+
+        - create table computer(
+                computer_id number primary key,
+                brand varchar2(20) not null,
+                type char(1) not null
+                );
+
+        - SQL column constraints:
+                Primary key, foreign key, null,not null unique.
+
+        - Describe computers -> to display table information metadata of table
+                Describe computers;
+
+        - insert data in SQL database
+                insert into computers values( 123 ,'HP','L');
+                select * from computers
+
+
+----------------------------------------------------------------------------------------
+* SQL technical interview
+        1.	Write a SQL query to find how many records are there in Town table where
+        “TOWN_NAME” has “ell” in them?
+                - select count(*)
+                from town
+                where town_name like '%ell%';
+
+        2.	Write a SQL query to find how many occurrences of each “COUNTRY_CODE” are
+        there in the Town table?
+                - select country_code,count(*)
+                from town
+                Group by country_code;
+
+        3.	Write a SQL query to find the “TOWN_NAME” where there are non-alphanumeric
+        characters? REGEX is used for matching some formats like 10 number etc
+                select(*)
+                from town
+                where town_name not like '%[^a-zA-Z0-9]%';
+
+
+        4.	Write a SQL query to select the first 5 records from Town table?
+                select *
+                from town
+                where rownum <= 5;
+
+----------------------------------------------------------------------------------------
+* Inner JOIN interview
+                - when we query data from multiple tables we need joins and when we need
+                to find matching records we use inner joins.
+                - inner join is used when we need to display data from multiple tables.
+                and it will return matching records.
+
+        1.Write a SQL query to find the salary for the people working in the QA department
+        and the HR Department?
+
+                select empid, name, salary, deptid
+                from employee e join departments d
+                on e.empid = d.empid
+                where deptid in('QA','HR');
+
+
+----------------------------------------------------------------------------------------
+* selfJoin interview ( )
+        1.
+        select emp.employee_id, emp.first_name, man.first_name, man.last_name
+        from employees emp join employees man
+        on emp.manager_id = man.employee_id;
+
+----------------------------------------------------------------------------------------
+* inner join vs outer join
+        - we need joins when ever we need query data from multiple tables
+
+        1.Inner join returns matching records from both tables according to joining condition
+        2.outter join returns matching data plus non matching data either from right
+          or left tables.
+
+          Example: inner join
+                select last_name, department_name
+                from employees join departments
+                on employees.department_id = departments.department_id;
+----------------------------------------------------------------------------------------
+* difference between Union and Union ALL
+        - we use these set operators when we need to display data from multiple or 2 queries
+        - UNION: removes duplicates and null values and sorts the result,
+        - UNION ALL: does not remove duplicates and does not sort
+----------------------------------------------------------------------------------------
+* difference between Intersect and Minus
+        - INTERSECT: displays common data en both queries
+        - MINUS: returns records from first query that is not present in second query.
+
+----------------------------------------------------------------------------------------
+* JOIN VS UNION interview question
+        - joins are used to display query from multiple tables
+        - Union is used to query data from multiple queries.
+----------------------------------------------------------------------------------------
+* difference between GROUP BY vs ORDER BY
+        - group by is used whenever we work with group functions it will help to
+        create sub groups within a group
+        - order by is used to sort either descending and ascending
+----------------------------------------------------------------------------------------
+* difference between HAVING vs WHERE
+        Ans: HAVING is used to specify a condition for a group or an aggregate function
+        used in select statement. The WHERE clause selects before grouping. The HAVING
+        clause selects rows after grouping. Unlike HAVING clause, the WHERE clause cannot
+        contain aggregate functions.
+
+        - when ever our condition includes a group founction
+        example: HAVING max(salary) > 9000;
+
+        - where is used to filter the results and when we do not use group function
+        example: where employee_id = 234;
+----------------------------------------------------------------------------------------
+* Display 5th row from table ( CORE RELATED SUB QUERY)
+
+        - we need to use correlated subquery
+        - inner query will get columns along with rownumber and outer query will look
+        for specific row number
+
+        example 1:
+        select *
+        from (select employee_id,first_name, rownum as rn from employees)
+        where rn = 5;
+
+        example 2:
+        (select * from employees where rownum <=5)
+        minus
+        (select * from employees where rownum <=4);
+
+        example 3: 5th largest salary questions
+        select salary from employees e1
+        where 5= (select count(salary)
+        from employees e2 where e1.salary<=e2.salary);
+----------------------------------------------------------------------------------------
+* difference between drop vs truncate
+
+        - both are ddl commands and cannot be undone,
+        - drop will remove data and table together
+        - truncate will remove all data but not table structure.
+        - DROP EMPLOYEES;
+        - TRUNCATE EMPLOYEES;
+
+----------------------------------------------------------------------------------------
+* Commit commands
+        - when ever we make changes to database we can commit to save changes
+
+----------------------------------------------------------------------------------------
+* do you know SQL?
+        - yes I have experience and i am confortable with writing SQL queries DDL and DML
+        commands. currently working with oracle database that is running in amazon cloud server.
+
+        - WHAT IS DDL? data definition language : create alter drop truncate
+        - DML data manipulation languages: select delete insert update
+----------------------------------------------------------------------------------------
+* What is SQL?
+        - SQL is Structured Query Language designed for inserting and modifying in a relational database system.
+----------------------------------------------------------------------------------------
+*What is the difference between primary key and unique constraints?
+        - Ans: Primary key cannot have NULL value, the unique constraints can have NULL values.
+         There is only one primary key in a table, but there can be multiple unique constrains.
+
+----------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------
+
+
+==========================================================================
+============================= API ==================================
+==========================================================================
+
+
+API BOOTCAMP
+----------------------------------------------------------------------------------------
+* what kind of database testing are you doing?
+        - I am mostly doing database validations
+        - I make changes or insert data in the front end and validate in the database
+          Data in front end matches the database
+        - i also make changes using RESTapi and verify that changes are successfull in database
+          as well
+        - I also support database migration process, My code connects to all database
+          Sybase (legacy database) using JDBC then connects to oracle (new DB )
+          and then compare records to make sure data was migrated successfully
+
+
+----------------------------------------------------------------------------------------
+* Batch jobs of application?
+    - some automated code that runs every night time and make some status changes
+      to some data
+
+    Example: coupon that is valid for  7 days. Batch job is scanning through each coupon and if
+    coupon hit 7 days it will update the status in database as invalid.
+----------------------------------------------------------------------------------------
+* do you have experience with RestfulAPI Testing?
+    - application in the current project needs to be integrated to other internal
+    and external application for the integration our team developed restful api so i am testing it.
+
+    - i verify rest api end point is working as expected
+    i use postman for manual api testing and use restassured library in java for automation
+    i send post put get delete type of request and veirfy responses status code and response body header
+    i also do positive and negative testing of api.
+    when i do positive testing i send valid request parameters, valid headers valid request json body
+    and verify that response status code i 200
+----------------------------------------------------------------------------------------
+* http methods/request?
+    - get: read data
+    - post: create
+    - put: update
+    - delete: delete
+
+    - post vs put
+
+----------------------------------------------------------------------------------------
+* Status code
+    2×× Success
+    200 OK
+    201 Created
+
+    3×× Redirection
+    300 Multiple Choices
+    301 Moved Permanently
+    302 Found
+
+    4×× Client Error
+    400 Bad Request
+    401 Unauthorized
+    402 Payment Required
+    403 Forbidden
+    404 Not Found
+
+    5×× Server Error
+    500 Internal Server Error
+    501 Not Implemented
+    502 Bad Gateway
+----------------------------------------------------------------------------------------
+* Headers
+    - accept, content-type, application JSON, Application XML
+----------------------------------------------------------------------------------------
+* parameters
+    - 2 types
+    - path parameters ( value will be part of URL)
+    - query / request parameters(key+value format)
+
+----------------------------------------------------------------------------------------
+* Validate/check /assert JSON body
+    - {
+        "employee_id": 100,
+        "first_name": "steven"
+    }
+
+    we use hamcrest matcher that comes with restassured library
+    - 1.When().get(uri).then().body("first_name",equalto("steven"));
+
+    using jsonpath:
+    - 2.JsonPath json = when().get(uri).thenreturn().body().jsonpath();
+    assert.asserEquals(json.getString("last_name"),"king");
+
+
+    - 3.Using collections. HashMap
+    Response response = when().get(uri);
+    Map map = response.body().as(Map.class);
+    assert.assertEquals(map.get(job_id),"AD_PRES");
+
+    - 4.Using POJOs. create a class first
+    public class employee{}
+    Response response = when().get(uri);
+    Employee map = response.body().as(Employee.class);
+    assert.assertEquals(emp.getSalary(),24000);
+----------------------------------------------------------------------------------------
+* Serealization vs DE-Serealization
+    - serealization: convert java object to Json
+    - De-serialization: JSON to java Object
+----------------------------------------------------------------------------------------
+* Gson Parser
+    - Gson parser is used to convert json to java object or vise versa
+    - 2 useful methods from json to json
+
+----------------------------------------------------------------------------------------
+
+
+
+==========================================================================
+=========================== FrameWork =================================
+==========================================================================
+
+FRAMEWORK
+
+May 12, 2018
+
+
+--------------------------------------------------------------------------
+* Testng vs Junit
+
+                                 Junit                Testng
+    Annotation support               y                   y
+    suite Test                       y                   y
+    ignore Test                      y                   y
+    exception Test                   y                   y
+    timeout                          y                   y
+    parameterized Test               y                   y
+    dependency test                  N                   y
+
+
+--------------------------------------------------------------------------
+* what tools used to develop your application?
+    - Java Spring -> back end code of the website
+    - angular -> front end of the application
+    - Tomcat server -> developers use it hosts the website
+    - Oracle Database -> Database
+    - jenkins -> to deploy the application
+    - Eclipse and IntelliJ Idea
+    - SonarCube -> code coverage age tool
+    - Docker -> host, deploy
+
+
+--------------------------------------------------------------------------
+* describe your framework 1 TestNG + selenium
+    - JAVA
+    - MAVEN
+    - TestNG
+    - SELENIUM
+    - EXTEND REPORTS : works with testng and selenium for reports
+    - LOG4J
+    - JDBC
+    - REST ASSURED
+    - APACHE POI
+
+
+--------------------------------------------------------------------------
+* describe your framework 2 ( CUCUMBER BDD FRAMEWORK)
+    - TESTNG / JUNIT ( ONE OF THEM NOT BOTH)
+    - CUCUMBER
+    - JAVA
+    - MAVEN
+    - SELENIUM
+    - HTML REPORTING
+    - JDBC
+    - REST ASSURED
+    - APACHE POI
+    - GIT
+    - JENKINS
+
+--------------------------------------------------------------------------
+* HOW DOES YOUR FRAMEWORK GENERATE?
+    - our cucumber BDD framework generates HTML reports
+    - the reports shows the pass/fail coverage for feature files
+    tags,steps.
+    - the report contains the steps for each test
+    - the report has screenshots for failures
+
+--------------------------------------------------------------------------
+* how do you take screenshot in your framework?
+    - IN my framework i have the logic for taking screen screenshots
+    in the hook class. that is because i want to take screenshot
+    even if the test fails. Hook guarantees that the method for screenshot
+    will work even if test fails.
+
+        - TakeScreenshot interface is the method used to take the screenshot. It
+        comes from selenium interface.
+        - this report is the same report used in my jenkins test. when
+        on jenkins i generate the report using the cucumber reports plugin
+        - when i run locally same report is generated by the configuration in the pom
+        file.
+        - both of this configuration options use the Json file to generate report
+            PLUGIN = "json...."
+--------------------------------------------------------------------------
+* what do you use for logging?
+    - i use log4j for logging. i always log important steps in the test executing
+    that helps me to debug when there is a failure.
+    - log4j is not a replacement for html reports.
+
+
+--------------------------------------------------------------------------
+* how does the feature file work? tell me the syntax of an entire feature file
+    - feature -> description of what is being tested
+    - scenario -> description of the scenario being tested
+        - Given ->  a precondition
+        - When ->  condition that triggers the expected result
+        - Then ->
+
+--------------------------------------------------------------------------
+* cucumber scenario example
+    - Given i am on the login page
+    - And i enter username and password
+    - When i click on the submit button
+    - Then i should be able to see the profile picture
+--------------------------------------------------------------------------
+* Sample of feature file
+    - Feature: log in fuctionality
+    - Background:" anything common will go in background "
+                 Given I am on the log in page
+    - Scenario: 1
+    - Scenario: 2
+--------------------------------------------------------------------------
+* Scenario Outline
+    - Scenario outline: search
+    - Given I am there
+    - And I search for "<item>"
+    Example:
+    |item|
+    |wooden spoon|
+    |carbon fiber spoon|
+
+    * the scenario will run twise first time it will search for wooden spoon
+    next time will search for carbon fiber spoong
+
+
+--------------------------------------------------------------------------
+* what is test base class? and how do you implement in your framework?
+    - When we talk about test base class we talk about framework 1 only
+    - test base class is class where i have most used methods in my test
+      my test classes extend the test base class and thus have access to those
+      methods this helps us make my code reusable
+
+    - Before/after test methods
+    - wait/synchronization utility methods
+    - switchToWindow(title)
+    - WebDriver driver;
+
+--------------------------------------------------------------------------
+* How to re-run the failed tests again?
+    - it is different depending on what tools are being used?
+          THIS ID DONE IN POM *
+        - In TESTNG : framework (not cucumber), failed tests are reported in the
+                    testng_failed.xml file in target folder. we can add
+                    this file in the pom file so that maven will try to run the
+                    failed tests every time. it will only run when there are failures
+                    in the test.
+
+
+
+--------------------------------------------------------------------------
+* how to rerun the failed tests again in cucumber?
+    - to re-run the failed tests in cucumber we use the re-run option
+      in the CukesRunner
+        1: Add the re-run to cukes runner. this option will create a file with a
+           list of failed tests.
+        2: create a second runner class which points to file with a list of
+           failed tests
+        3: Add the second runner in pom file
+
+--------------------------------------------------------------------------
+* how to run failed tests again in Jenkins?
+    - in jenkins there are plugin that are run the failed tests. Unit cases(not cucumber)
+    -
+
+--------------------------------------------------------------------------
+* how to run tests selectively cucumber?
+    - tags keyword the CukesRunner
+    - feature keyword the CukesRunner
+    - tags and features can also be passed using the command line
+
+
+        - mvn clean test -Dcucumber.options="--tags ~@nonexistantTag"
+
+--------------------------------------------------------------------------
+* please choose one user story from your current application and walk me through
+for the automation?
+    - //come up with 1 or 2
+
+--------------------------------------------------------------------------
+* What is your thropy bug?
+    - //come up with 1 or 2
+
+--------------------------------------------------------------------------
+* How you intergrate selenium with JIRA?
+    - selenium does not have a built in integration with JIRA. but there are plugins that
+    integrate selenium testing framework with jira.
+    - XRAY(jira plugin, Jenkins plugin)
+    - Zephyr(jira plugin)
+
+--------------------------------------------------------------------------
+* when do you do automation in your sprint?
+    - When developers are done with their part
+    - When code is deployed to QA/test environment
+    - when all manual test are done
+    - if you are test in the staging/UAT environment you wont be testing
+      stories which are being develop.
+    - You are in  team of testers. all the stories you get in your team are
+      testing stories and ready to be tested.
+    - you are part of a mixed team with testers and developers in this case
+      you will test features which are being developed so you want for developer
+      to finish the code changes and push to QA environment
+--------------------------------------------------------------------------
+* Have you set up any job in jenkings?
+    -
+--------------------------------------------------------------------------
+* * where do you store the test results/reports?
+    - the location of the reports depends n how we are running
+    them.
+    - if we are running locally, reports will be generated in the
+    target folder. my framework generates cucumber reports folder in the targer
+    foder which contains the report
+    - when we run the tests on jenkins jenkins saves the report
+    of every run. all the reports for previous runs can be found under
+    the build number.
+--------------------------------------------------------------------------
+* How do you GET TEST DATA?
+    - delphix -> tool/or company that provides test data
+    - in my project there were 2 sources for test data
+        1. Developers got the data from production database changed the sensitive
+        information
+        2. i had to generate test data. in my job i had to generate
+        test data for parking tickets i had to use selenium to fill the form to create
+        parking tickets in the test environment.
+    - java faker
+    - apache also has couple dips
+
+--------------------------------------------------------------------------
+* what coding standards to you have?
+    - in my project we had a formatter for code format. everyone had to use the same
+    formating standard.
+    - in my company one of the things we check during the code review
+    is the coding standards
+
+--------------------------------------------------------------------------
+* how many environment do you have?
+    - in my project we had the following enviroments:
+        1. dev enviroments
+        2. QA/Test enviroment- this is where i test
+        3. Staging enviroment
+        4.
+--------------------------------------------------------------------------
+* How do you code review?
+    - in my company we use cricuable to do code reviews. it only works
+        with bitbucket
+    - In github it is different:
+        - you check in code
+        - create a pull request
+        - Some will review the pull request and merge
+--------------------------------------------------------------------------
+* Who will review your code?
+    - other testers
+    - test lead.
+--------------------------------------------------------------------------
+
+
+*How do you test API service?
+    I am using Restassured library, what I am verifying is the status code, Response message/error
+    message few other response details like Json format.
+
+COMMON ERRORS IN API:
+
+    1xx: Informational - Communicates transfer protocol-level information
+
+    2xx: Success -Indicates that the client’s request was accepted successfully.
+
+    3xx: Redirection - Indicates that the client must take some additional action in order to
+    complete their request.
+    4xx: Client Error - This category of error status codes points the finger at clients.
+
+    5xx: Server Error - The server takes responsibility for these error status codes.
+
+https://nordicapis.com/best-practices-api-error-handling/
+
+What type is your database?
+
+*Are you storing your JSON body in Oracles?
+    Yes I store Json data en Oracle Database using columns whose data types are
+    varchar2. (also clob or blob) the choice of which to use is typically motivated
+    by size of the JSON document i need to manage:
+        -I use varchar2 (4000) if my Jason document does not exceed 4000 bytes(or characters)
+        -Use VARCHAR2(32767) if you know that some of your JSON documents are larger than 4000
+        bytes (or characters) and you are sure than none of the documents exceeds 32767 bytes
+        (or characters)Footref 1.
+        -I use BLOB (BINARY LARGE OBJECT) or CLOB(CHARACTER LARGE OBJECT) storage if you know
+        that you have some JSON document that are larger than 32767 bytes or characters
+
+  Example for JSON Data to ORACLE: (press command+click ) to open link
+    https://docs.oracle.com/en/database/oracle/oracle-database/12.2/adjsn/creating-a-table-with-a-json-column.html#GUID-E6CC0DCF-3D72-41EF-ACA4-B3BF54EE3CA0
+
+
+
+When are you testing your service and your received 500 error and how would you debug it?
+    First of all 500 its a internal server error. This isn’t because these errors are usually
+    hard to fix, however. It’s because the error is usually not specific and can occur for a
+    number of different reasons. What i do to debug the error depends upon the server and
+    what’s actually running at the time.
+        *DEBUG COMMON PLATFORMS
+            1: If the software was just upgraded to a new version, it’s likely that the upgrade
+            failed and needs to be refreshed.
+
+            2: If a new plugin or theme was just activated, it’s probably a good idea to roll that
+            change back and try again. Even well-tested plugins might conflict with other plugins
+            in the installation.
+
+            3: If the software has been upgraded, older plugins or themes might not be compatible
+            with the upgrade. The only course of action is to start deactivating things until the
+            error goes away. That doesn’t directly solve the problem; however, it will find the
+            issue. It might be possible to get the plugin developer to release an update.
+        *DEBBUGING SERVER SIDE SCRIPTS
+            1: Server permission: Very commonly, incorrect permissions on a file or folder that
+            contains one of the scripts causes this this error.
+
+            2: Server timeout: If the server was busy, needed to be rebooted, or the connection
+            was lost, the script might still report a 500 Internal Server Error. It’s possible
+            that the error might not happen the next time.
+
+*What is 400 ?
+    4XX – Client Error
+    The 4XX series of error codes is perhaps the most famous due to the iconic 404 Not Found status,
+    which is a well-known marker for URLs and URIs that are incorrectly formed. Other more useful
+    status codes for APIs exist in this range, however.
+
+    414 URI Too Long is a common status code, denoting that the data pushed through in a GET request
+    is too long, and should be converted to a POST request. Another common code is 429 Too many
+    Requests, which is used for rate limiting to note a client is attempting too many requests at once,
+    and that their traffic is being rejected.
+
+*How do you validate your response from your API?
+
+
+
+*Are you doing any verifications in your database?
+    yes but before that i make sure to create a connection:
+
+      1: Connection con = DriverManager.getConnection(dbUrl,username,password);
+
+    Send Queries to the Database Once connection is made, I execute the queries.
+
+      2: Statement statement=connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+
+    Process Results from the executed query are stored in the ResultSet Object.
+
+      3:   ResultSet resultSet = statement.executeQuery("select * from countries");
+
+        **** Summary of Steps for Selenium Database Testing ****
+
+        Step 1) Make a connection to the Database using method.
+
+            DriverManager.getConnection(URL, "userid", "password" )
+
+        Step 2) Create Query to the Database using the Statement Object.
+
+            Statement stmt = con.createStatement();
+
+        Step 3) Send the query to database using execute query and store the results in the ResultSet object.
+
+            ResultSet rs = stmt.executeQuery(select * from employee;);
+
+
+
+
+How do you automate database validation part?
+    @Test
+    public void jdbcMetadata() throws Exception{
+	  Connection connection=DriverManager.getConnection(oracleDbUrl, oracleDbUsername, oracleDbPassword);
+	  Statement statement=connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+	  String sql = "select employee_id,last_name,job_id, salary from employees";
+	  ResultSet resultSet = statement.executeQuery(sql);
+
+	  // 1: DATABASE METADATA
+	  DatabaseMetaData dbMetadata = connection.getMetaData();
+	  System.out.println("User:" + dbMetadata.getUserName()); // returns User and database type
+	  System.out.println("Database type:" + dbMetadata.getDatabaseProductName());
+
+	  // 2: RESULTSET store it in ResulSetMETADATA
+	  ResultSetMetaData rsMedata = resultSet.getMetaData();
+	  System.out.println("Columns count:" + rsMedata.getColumnCount());
+	  System.out.println( rsMedata.getColumnName(1));
+
+	  //print all column names using a loop
+	  for (int i = 1; i <= rsMedata.getColumnCount() ; i++) {
+		System.out.println(i +" -> " + rsMedata.getColumnName(i));
+	  }
+
+	  //Throw ResulSet into a List of Maps
+	  //Create a List of Maps
+	  List<Map<String,Object>> list = new ArrayList<>();
+	  ResultSetMetaData rsMdata = resultSet.getMetaData();
+
+	  int colCount = rsMdata.getColumnCount();
+
+	  while(resultSet.next()) {
+		  Map<String,Object> rowMap = new HashMap<>();
+
+		  for(int col = 1; col <= colCount; col++) {
+			  rowMap.put(rsMdata.getColumnName(col), resultSet.getObject(col));
+		  }
+
+
+		  list.add(rowMap);
+	  }
+
+	  //print all Employees ID from a list of maps
+
+	  for (Map<String, Object> emp: list) {
+		System.out.println(emp.get("EMPLOYEE_ID"));
+	  }
+
+	  resultSet.close();
+	  statement.close();
+	  connection.close();
+  }
+
+
+}
+* How would u test api manually. Describe steps
+    First of all I start by going over the API documentation. thats where
+    i collect the api Authentication url. in order to get my access token.
+    I use postman as manual automation tool I make sure to have access by
+    entering authorization as key and my access token as value. of course
+    i have to make sure that content type is json and my acceptance type is also
+    Json. Then once i get my call I test based on my API documentation my end points
+    currenly i am testing preferences API. I also make sure the status code is 200
+    and that is how i do manual testing. The other option is using the Network option
+    when i inspect my UI application. i check the Headers, Preview, Response.
+
+
+======================== LINUX INTERVIEW QUESTION ===========================
+
+*How to find all the links in a folder in UNIX or Linux ?:
+
+    I use ls -lrt to be more specific i use grep to collect only links by using
+
+    ls - lrt | grep '^ l'     " ^ <- this symbol is called caret"
+
+        linux@nyj872:~ ls -lrt total 2.0K
+        -rw-r--r-- 1 Linux Domain Users 0 Dec 6 2011 a
+        drwxr-xr-x+ 1 Linux Domain Users 0 Sep 19 12:30 java/
+        lrwxrwxrwx 1 Linux Domain Users 4 Sep 19 12:31 version_1.0 -> java/
+
+        linux@nyj872:~ ls -lrt | grep '^l'
+        lrwxrwxrwx 1 Linux Domain Users 4 Sep 19 12:31 version_1.0 -> java/
+
+Read more: http://www.java67.com/2012/09/10-linux-and-unix-interview-questions-answers-wipro-tcs-capegemini.html#ixzz5IkaVVrHV
+
+*How to find a process and kill that?:
+
+    by using "ps -ef" you can get a list of all process and then use grep to find your
+    process and get the PID of that process. Once you got PID you can use the kill command
+    to kill that process
+
+Read more: http://www.java67.com/2012/09/10-linux-and-unix-interview-questions-answers-wipro-tcs-capegemini.html#ixzz5IkfGi5lc
+
+*How to run a program in the background in UNIX or Linux ?:
+    You can use &amp; to run any process in the background and then you can use jobs
+    to find the job id for that process and can use  fg and bg command to bring that
+    process into foreground and background
+
+Read more: http://www.java67.com/2012/09/10-linux-and-unix-interview-questions-answers-wipro-tcs-capegemini.html#ixzz5IkfwCDNf
+
+*How to sort the output of a command in reverse order in Linux or UNIX ?:
+
+1) Sorting based on numeric value of String using UNIX sort command:
+    Many times instead of alphabetic sorting we need numeric sorting. Just
+    like in below example of Unix sort command if we want to sort based upon a
+    numeric value of PID we can use sort -n along with sort -k(column).
+    Since here PID is second column sort -nk2 will work for us. This is also
+    another great example of UNIX sort by column, which allows you do sort the
+    data based on any column in UNIX
+
+        unix-sort-examples@unix-tutorial:~/test ps -ef | sort -nk2
+        UID                  PID       PPID TTY     STIME COMMAND
+        unix-sort-examples     500    2832   0    Jul 18 /usr/bin/bash
+        unix-sort-examples    1976    3556   2    Jul18 /usr/bin/ps
+        unix-sort-examples    2324       1 con    Jul 18 /cthelper
+        unix-sort-examples    2676       1 con    Jul 18 /cthelper
+        unix-sort-examples    2832       1 con    Jul 18 /cthelper
+        unix-sort-examples    3332    2676   1    Jul 18 /usr/bin/bash
+        unix-sort-examples    3556    2324   2    Jul 18 /usr/bin/bash
+
+2) Reverse sort by using UNIX sort command:
+    Sometimes we need to sort in reverse order e.g. descending order.
+    sort -r option allows us to perform reverse sorting in Unix.
+
+        unix-sort-examples@unix-tutorial:~/test ps -ef | sort -rnk2
+        unix-sort-examples    3616    3556   2  11:49:43 /usr/bin/ps
+        unix-sort-examples    3556    2324   2    Jul 18 /usr/bin/bash
+        unix-sort-examples    3448       0   0    Jan  1 /usr/bin/ps
+        unix-sort-examples    3332    2676   1    Jul 18 /usr/bin/bash
+        unix-sort-examples     500    2832   0    Jul 18 /usr/bin/bash
+            UID     PID    PPID TTY     STIME COMMAND
+3) UNIX sort by column : Sorting based on any column in the input.
+    sort command in Unix mostly used in combination of other Unix commands
+    like find, grep, ls or ps and most of these commands produce output in
+    tabular format and we want to sort based on any column. Unix sort command
+    allows us to do this by using sort -k option. Let's see an example or Unix sort
+    command to sort the output on any column we will use ps command output for this
+    example and we will sort this output on column 2 (PID) and later on column 3 (PPID)
+
+        unix-sort-examples@unix-tutorial:~/test ps -ef | sort -nk2
+            UID     PID    PPID TTY     STIME COMMAND
+        unix-sort-examples     500    2832   0    Jul 18 /usr/bin/bash
+        unix-sort-examples    2324       1 con    Jul 18 /cygdrive/c/Software/puttycyg-20101029/puttycyg-20101029/cthelper
+        unix-sort-examples    2564       0   0    Jan  1 /usr/bin/bash
+        unix-sort-examples    2676       1 con    Jul 18 /cygdrive/c/Software/puttycyg-20101029/puttycyg-20101029/cthelper
+        unix-sort-examples    2832       1 con    Jul 18 /cygdrive/c/Software/puttycyg-20101029/puttycyg-20101029/cthelper
+        unix-sort-examples    3332    2676   1    Jul 18 /usr/bin/bash
+        unix-sort-examples    3556    2324   2    Jul 18 /usr/bin/bash
+        unix-sort-examples    3764    3556   2  11:58:08 /usr/bin/ps
+
+
+Read more: https://javarevisited.blogspot.com/2011/08/unix-sort-command-example-tutorial.html#ixzz5IkhnBHek
+
+*How to create an archive file in UNIX or Linux Operating System ?:
+    Another interview question based on knowledge of UNIX or Linux command.
+    you can use the tar command to great archives in UNIX or Linux. you can
+    even combine tar and gzip to create a compressed archive in UNIX
+
+
+Read more: http://www.java67.com/2012/09/10-linux-and-unix-interview-questions-answers-wipro-tcs-capegemini.html#ixzz5IkijuQg4
+
+
+*What is the meaning of a file has 644 permission ?
+    The 644 represents permission 110 for the owner,
+    permission 100 for group and 100 for others which means read + write for an owner
+    who creates that file and read only permission for group and others.
+
+Read more: http://www.java67.com/2012/09/10-linux-and-unix-interview-questions-answers-wipro-tcs-capegemini.html#ixzz5IkjFOam7
+
+
+
+* How will you remove empty files or directories from /tmp ?:
+Read more: http://www.java67.com/2012/09/10-linux-and-unix-interview-questions-answers-wipro-tcs-capegemini.html#ixzz5Ikls2zoo
+CREATE:
+
+        //This will create empty file in current directory
+        test@localhost:~/unix touch empty.txt
+
+        //This will create empty directory inside current directory
+        test@localhost:~/unix mkdir empty_dir
+
+        //This command will find all empty files and directories in Unix
+        test@localhost:~/unix find . -empty
+        ./empty.txt
+        ./empty_dir
+
+PRINT:
+
+        //this command will print empty files
+        test@localhost:~/unix find . -type f -empty
+        ./empty.txt
+
+
+        //this command will print empty directories
+        test@localhost:~/unix find  . -type d -empty
+        ./empty_dir
+
+
+        //How to use grep command to print empty files and directories
+        test@localhost:~/unix ls -ltr | grep '\<0\>'
+        drwxr-xr-x+ 1 test Domain Users   0 Jun 15 11:43 empty_dir/
+        -rw-r--r--  1 test Domain Users   0 Jun 15 11:44 empty.txt
+
+        //find command to print empty files and directories
+        test@localhost:~/unix find . -maxdepth 1  -size 0 -ls
+        90353467524120775    0 drwxr-xr-x   1 test Domain Users        0 Jun 15 11:43 .
+        9007199255261921     0 -rw-r--r--   1 test Domain Users        0 Jun 15 11:44 ./empty.txt
+        19421773393554899    0 drwxr-xr-x   1 test Domain Users        0 Jun 15 11:43 ./empty_dir
+
+REMOVE:
+        //removing Empty files and directories using find command
+        test@localhost:~/unix find . -empty -delete
+
+        test@localhost:~/unix find . -empty -delete
+
+        test@localhost:~/unix ls -lrt
+        total 1.0K
+        -rw-r--r-- 1 test Domain Users 118 Aug  4  2011 contacts.txt
+
+        //using find and xargs command to remove empty files and directories
+        test@localhost:~/unix find . -empty | xargs rm -r
+
+        test@localhost:~/unix find . -empty -type d -exec rm -r {} \;
+        find: `./empty_dir': Not a directory
+
+
+Read more: https://javarevisited.blogspot.com/2012/08/delete-empty-files-directories-unix.html#ixzz5IkledGw5
+
+
+
+*I have read permission on a directory but I am not able to enter it why ?:
+    In order to get into a directory, you need to execute permission. if your directory
+    does not have to execute permission then you can not go into that directory by using the cd command
+
+Read more: http://www.java67.com/2012/09/10-linux-and-unix-interview-questions-answers-wipro-tcs-capegemini.html#ixzz5IkmKTFXi
+
+NUMERIC FILE PERMISSION UNIX:
+        0 – no permissions
+        1 – execute only
+        2 – write only
+        3 – write and execute
+        4 – read only
+        5 – read and execute
+        6 – read and write
+        7 – read, write and execute
+
+SYBOLIC FILE PERMISSION UNIX:
+        Reference       Class   Description
+        u       user    the owner of the file
+        g       group   users who are members of the file's group
+        o       others  users who are not the owner of the file or members of the group
+        a       all     all three of the above, is the same as ugo
+        r       read    read a file or list a directory's contents
+        w       write   write to a file or directory
+        x       execute execute a file or recurse a directory tree
+
+DEFAULT PERMISSION:
+        Default permission of file -- 666
+        usmak                      -- 022
+        ----------------------------------
+        Final permissions on file -- 644 (which is 110 100 100 i.e. rw- r-- r--)
+        read and write for user and read only for group and others
+
+        Default permission of directory -- 777
+        umask                            -- 022
+        ----------------------------------------
+        Final permission of file         -- 755 (which is 111 101 101 i.e. rwx r-x r-x)
+        read, write and execute for user (owner) and read+execute for group members and others.
+
+CHANGE PERMISSION:
+        stock_options:~/test touch stock_trading_systems
+
+        stock_options:~/test ls -lrt
+        total 8.0K
+        -rw-r--r--  1 stock_options Domain Users    0 Nov 15 11:42 stock_trading_systems
+
+        stock_options:~/test chmod 400 stock_trading_systems
+
+        stock_options:~/test ls -lrt
+        total 8.0K
+        -r--------  1 stock_options Domain Users    0 Nov 15 11:42 stock_trading_systems
+
+        stock_options:~/test vim stock_trading_systems
+
+        stock_options:~/test chmod 777 stock_trading_systems
+
+        stock_options:~/test ls -lrt
+        total 8.0K
+        -rwxrwxrwx  1 stock_options Domain Users    0 Nov 15 11:42 stock_trading_systems*
+
+
+Read more: https://javarevisited.blogspot.com/2011/11/file-permissions-in-unix-linux-example.html#ixzz5IknXmjRM
+
+
+*How to find size of file / directory /document :?
+    I use du -h "filename" to make it readable the result will be in bytes/Megabites etc.
+        alexs-MacBook-Pro:Desktop arod$ du -h ALEX.pdf
+        6.9M	ALEX.pdf
+        alexs-MacBook-Pro:Desktop arod$
+
+*How do  you find all the process listening on a particular port in Linux?:
+    I use netstat to find a process in a particular port example
+        $ netstat -nap | grep 8084
+        (Not all processes could be identified, non-owned process info will not be shown, you would have to be root to see it all.)
+        tcp 0 0 0.0.0.0:8084 0.0.0.0:* LISTEN 25314/java
+
+Read more: http://www.java67.com/2012/09/10-linux-and-unix-interview-questions-answers-wipro-tcs-capegemini.html#ixzz5Ikp8kt62
+
+
+Read more: http://www.java67.com/2012/09/10-linux-and-unix-interview-questions-answers-wipro-tcs-capegemini.html#ixzz5Ikp3c6W9
+
+
+*How to you find all the process which has opened a file in Linux?:
+    You can use the lsof (list open files) command to find out the process which has a file
+    handle on the particular file. It's very useful command to check which process are reading a file
+
+        *How to find all opened files by a user
+            $ lsof -u username
+
+            alexs-MacBook-Pro:Desktop arod$ lsof | grep java
+
+Read more: https://javarevisited.blogspot.com/2016/06/10-example-of-lsof-command-in-unix-linux.html#ixzz5Ikr9eUQV
+
+
+How to send HTTP request from a Linux server?:
+    You can use either wget or curl command to send HTTP request, both GET and POST from a Linux machine as shown below
+
+        alexs-MacBook-Pro:Desktop arod$ curl http://34.223.219.142:1212/ords/hr/employees/100
+
+        {"employee_id":100,"first_name":"Steven","last_name":"King","email":"SKING","phone_number"
+        :"515.123.4567","hire_date":"2003-06-17T04:00:00Z","job_id":"AD_PRES","salary":24000,
+        "commission_pct":null,"manager_id":null,"department_id":90,"links":
+        [{"rel":"self","href":"http://34.223.219.142:1212/ords/hr/employees/100"},
+        {"rel":"edit","href":"http://34.223.219.142:1212/ords/hr/employees/100"},
+        {"rel":"describedby","href":"http://34.223.219.142:1212/ords/hr/metadata-catalog/employees/item"},
+        {"rel":"collection","href":"http://34.223.219.142:1212/ords/hr/employees/"}]}alexs-MacBook-Pro:Desktop arod$
+
+Read more: http://www.java67.com/2012/09/10-linux-and-unix-interview-questions-answers-wipro-tcs-capegemini.html#ixzz5IkrjrAE2
+
+
+
+*How do you create a full directory structure e.g. /parent/child/grandchild in UNIX?:
+    Well, you can use the mkdir command with option -p to create all parent directories in one go
+
+        $ mkdir -p software/java/app/config
+        $ pwd /home/john
+        $ cd software/java/app/config/
+        [# ~/software/java/app/config]$
+
+Read more: http://www.java67.com/2012/09/10-linux-and-unix-interview-questions-answers-wipro-tcs-capegemini.html#ixzz5Iksbn3uU
+
+
+
+================ SQL QUERIES ===============
+
+
+SQL? STRUCTURE QUERY LANGUAGE
+
+SQL STATEMENTS:
+        DML: DATA MANIPULATION LANGUAGE(SDET JOB)
+                        SELECT
+                        INSERT
+                        UPDATE
+                        DELETE
+                        MERGE
+        DDL: DATA DEFINITION LANGUAGE ( DEVELOPER )
+                        CREATE
+                        ALTER
+                        DROP
+                        RENAME
+                        TRUNCATE
+                        COMMENT
+        DCL: DATA CONTROLER LANGUAGE
+                        GRANT
+                        REVOKE
+        TRANSIT CONTROL
+                        COMMIT
+                        ROLLBACK
+                        SAVEPOINT
+
+
+
+-- how to print duplicate row in a tables
+        select first_name,manager_id
+        from employees
+        group by first_name, manager_id
+        having count (*) > 1;
+
+-- how to print specifit duplicate individual from list based on
+    manager id 145
+
+        select *
+        from employees
+        where first_name = 'Peter'
+        and manager_id = 145;
+
+------------ Inner/left/right/outter JOIN -----------
+
+-- Inner join Ans: An SQL Join is used
+-- to combine data from two or more tables,
+-- based on a common field between them. For
+-- example, consider the following two tables.
+
+        select e.first_name, d.manager_id, d.location_id
+        from employees e  join departments d
+        on e.department_id = d.department_id;
+
+        select e.first_name, d.manager_id, d.location_id
+        from employees e left join departments d
+        on e.department_id = d.department_id;
+
+        select e.first_name, d.manager_id, d.location_id
+        from employees e right join departments d
+        on e.department_id = d.department_id;
+
+        select e.first_name, d.manager_id, d.location_id
+        from employees e full join departments d
+        on e.department_id = d.department_id;
+
+------------ NATURAL JOIN ----------- qualifier
+-- Natural join
+    -- joins on columns with same name
+    -- if name changes query will stop working
+    -- if new columns are added query may stop working
+    -- or show incorrect data
+    -- can not qualifier next to e.
+
+            select first_name,
+            last_name,
+            department_id,
+            department_name
+            from employees natural join departments;
+
+------------ CARTESIAN JOIN -----------
+    -- Not usually what you want
+    -- often because join condition is missed
+    -- gives you more records than expected
+    -- use cross join keyword
+
+        select first_name
+        department_name
+        from employees cross join departments;
+
+        select first_name
+        department_name
+        from employees, departments;
+
+------------ SELF JOIN -----------
+    -- join a table to itself
+    -- used when a record in a table is related to another
+    record in the same table
+    -- employee_id // manager_id
+
+            Select e.employee_id,
+            e.first_name,
+            e.last_name,
+            m.first_name,
+            m.last_name,
+            m.employee_id
+            from employees e
+            left join employees m
+            on e.manager_id = m.employee_id;
+
+
+
+------------ MULTIPLE TABLES JOIN -----------
+        -- Multiple Tables
+        -- big advantage of database
+        -- we just add another join keyword
+
+                select
+                e.employee_id,
+                e.first_name,
+                j.start_date,
+                l.job_title
+                from employees e
+                join job_history j
+                on e.employee_id = j.employee_id
+                join jobs l
+                on j.job_id = l.job_id;
+
+============================================================
+
+------------ instr function -----------
+
+ -- shows the number where that specific posission is lets say
+        for EABEL print me the number possition of letter B
+
+                select first_name,
+                last_name,
+                email,
+                instr(email,'B')
+                from employees;
+
+-- length of the name in numbers.
+                select length(first_name), first_name
+                from employees;
+
+
+------------ Nesting function within function -----------
+
+-- will allow you to print starting at 4568 which is the last 4 of a phone number
+        select first_name
+        last_name,
+        email,
+        phone_number,
+        instr(phone_number,4568)
+        from employees;
+
+------------ Dates functions -----------
+
+==== how to print todays Date ====
+for this you dont need any tables sql already comes with it
+
+                select sysdate
+                from dual;
+
+
+-- print first name and last name and hire date for Steven King and show add 5 years
+        from his hire date and name it alias as review_date.
+
+                select first_name,
+                last_name,
+                hire_date,
+                ADD_MONTHS(hire_date,60) as review_date
+                from employees
+                where first_name = 'Steven'
+                and last_name = 'King';
+
+how to print how long has an employee been working with the company?
+
+---- IN DAYS months between function is used first parameter is sysdate it will
+        generate the date between system date and time of hire.
+                select first_name,
+                last_name,
+                hire_date,
+                months_between(sysdate, hire_date) as time_with_company
+                from employees;
+
+--- in years we devide by 12 and later round by 1 decimal
+                select first_name,
+                last_name,
+                hire_date,
+                round (months_between(sysdate, hire_date)/12, 1) as Year_with_company
+                from employees;
+
+------------ ROUND numbers functions -----------
+rounds numbers from 20.59 to 21
+                select min_salary,
+                ROUND (min_salary)
+                from jobs;
+
+
+
+
+---------- SQL INTERVIEW QUERIES ---------
+
+-- find the second highest salary of employee
+
+select max(salary)
+from employees
+where salary not in
+(select max (salary) from employees);
+
+-- Find Max Salary from each department
+
+select department_id, max(salary)
+from employees
+group by
+department_id;
+
+
+-- print current date
+
+select sysdate
+from dual;
+
+-- print the name of the distinct employee
+-- whose hireDate is between 17-JUN-03 and 21-MAY-07
+
+select distinct first_name
+from employees
+where hire_date between '17-JUN-03' and '21-MAY-07';
+
+-- find employee whose salary is equal or greater than 10000
+
+select *
+from employees
+where salary >= 10000;
+
+-- find name of employees whose name starts with M
+
+select first_name
+from employees
+where first_name like 'M%';
+
+-- print anual salary for employees
+
+select first_name,last_name, salary*12
+from employees;
+
+
+-- print Lex from employees
+
+select *
+from employees
+where first_name = 'Lex';
+
+-- print salary for employees who earn 4000 to 8000
+
+select *
+from employees
+where salary between 4000 and 8000;
+
+-- list employees who are working in department 60 and 80
+
+select *
+from employees
+where department_id in (60,80);
+
+
+-- get employee id and last name in descending order based on employee id
+
+select employee_Id, last_name
+from employees
+order by employee_id desc;
+
+-- print last_name from employees and the lenght of their last names
+-- also count how many employees have the same last name
+
+select last_name, count(*) ,LENGTH(last_name)
+from employees
+group by last_name;
+
+-- select employee record with max salary
+
+select *
+from employees
+where salary = (select max (salary) from employees);
+
+-- select highest salary in employee table
+
+select max(salary)
+from employees;
+
+-- select range of employee based on Id
+
+select *
+from employees
+where employee_id between 100 and 113;
+
+--return employee name, highest salary and department name
+
+select e.first_name,
+e.salary,
+d.department_name
+from employees e join departments d
+on (e.department_id = d.department_id)
+where salary in (select max(salary) from employees);
+
+-- return highest salary employee name department name for each department
+
+select e.first_name,
+e.salary,
+d.department_name
+from employees e join departments d
+on (e.department_id = d.department_id)
+where salary in
+(select max(salary) from employees group by department_id);
+
+-- select a row if an employee is president or a sales
+-- representative and if the employee earns more than 15000
+
+select last_name, job_id, salary
+from employees
+where (job_id = 'SA_REP'
+or job_id = 'AD_PRES')
+and salary > 10000;
+
+-- select the row if an employee is a president and earns more than 15k
+-- or if the employee is a sales representative
+        select last_name, job_id, salary
+        from employees
+        where job_id = 'SA_REP'
+        or job_id = 'AD_PRES'
+        and salary > 15000;
+
+
+-- select employees from FI_ACCOUNT  who makes highest salary
+        select last_name, job_id, salary
+        from employees
+        where job_id = 'FI_ACCOUNT'
+        and salary =
+        (select max(salary)
+        from employees
+        where job_id = 'FI_ACCOUNT');
+
+
+--find how many records are in countries table where country_name has "in" in them
+        select count(*)
+        from countries
+        where country_name like '%in%';
+
+
+--natural join
+        select *
+        from employees,jobs
+        where employees.job_id = jobs.job_id;
+
+-- query: return first name job title and max salary
+
+
+
+--natural join
+        select jobs.job_title ,
+        jobs.max_salary,
+        employees.first_name
+        from employees,jobs
+        where employees.job_id = jobs.job_id;
+
+
+-- self Join
+
+        select a.first_Name, b.first_name
+        from employees a, employees b
+        where a.first_name = b.first_name;
+
+-- explicit inner join using join and on..
+
+        select a.first_Name, b.first_name
+        from employees a
+        join employees b
+        on a.first_name = b.first_name;
+
+-- joins right join
+
+        select c.first_name,c.department_id, j.min_salary,j.job_title
+        from employees c
+        right join jobs j
+        on c.job_id = j.job_id
+        order by c.first_name;
+
+
+-- print how many employees are in department id and id is 100 label
+-- it as employees
+
+        select count(department_id) as employees
+        from employees
+        where department_id=100;
+
+SQL DEVELOPER QUERY
+
+-- QUERY: print everything inside employees
+
+SELECT *
+FROM EMPLOYEES;
+
+-- Query: print firstname and lastname from employees
+select first_name, last_name
+from employees;
+
+-- Query: Print country name and region id from countries
+select country_name, region_id
+from countries;
+
+-- Query: print Argentina from countries table.
+select country_name
+from countries
+where country_name = 'Argentina';
+
+--Query: Print first name and last name from employees;
+select first_name, last_name
+from employees;
+
+--Query: Print all colums where commission pct is not null
+select *
+from employees
+where commission_pct is not null;
+
+--Query: Print first name last name together from employees and
+--rename the column as full name and make sure table name is in lower case
+--Example name: Ellen Abel -> EllenAbel
+--Example Column Heading: FIRST_NAME --> fullname
+select first_name || last_Name as "fullname"
+from employees;
+
+--Query: print components of employees table what does it consist of
+describe employees;
+
+--Query: print Schema of Database
+select table_name
+from user_tables;
+
+--Query: Print first name print the salary and anual salary from employees
+-- and rename it as anual_salary
+select first_name, salary, salary*12 as anual_salary
+from employees;
+
+--Query: Print anual salary+300 from employees
+select salary*12+300 from employees;
+
+--Query: print first name and concatenate " 's mercedes rocks "
+select first_name || q'['s mercedes rocks]'
+from employees;
+
+--Query: Select everything form employees where employees_id is less
+--than 120
+select *
+from employees
+where employee_id < 120;
+
+
+--Query: print first name that contains first letter of name capital A
+
+select first_name
+from employees
+where first_name like 'A%';
+
+--Query: Print unique job id and first name from employees
+select distinct job_id
+from employees;
+
+--Inner JOIN
+--Query:Give deparment name of an employee id
+
+select department_name, employee_id, first_name, last_name
+from employees e left join departments d
+on e.department_id = d.department_id
+where d.department_id is not null;
+
+select department_name, employee_id, first_name, last_name
+from employees e left join departments d
+on e.department_id = d.department_id;
+
+--Query: how do I find out if deparment table and employee table are
+--exactly the same
+(select employee_id
+from employees)
+minus
+(select department_id
+from employees);
+
+
+(select department_id
+from employees)
+minus
+(select employee_id
+from employees);
+
+
+
+========= Soft Skills =========
+
+1. Tell us about yourself and your framework/current project.
+    Currently I am a senior automation Engenieer and I am currently doing automation, how ever when its needed
+    i am also doing manual testing. I have experience working with banking and health care web applications. I have
+    profound experience using various tools, like java as my programinig language, selenium, maven, testNG, Junit. Jenkins for
+    continous integration, Jira for management aws for parallel execution and unix for my commands.
+    I am dedicated to a belief, I go by 3 core values, passion, opportunity, and integrity.
+    I am goal oriented, detail oriented and always focus on tasks to be completed.
+
+2. When the time is tight, would you just write an okayish code or do you always take extra time to review
+the code you wrote and polish it to make it better?
+    I always deliver quality product, the reason is over the years I learned how important is
+    to be organized and at the same time focus on your task. I dont like to waste time watching tv
+    I am either coding or learning new technology. When ever i have time to spare i participate on
+    meet up meetings. I like to share knowledge at the same time learn from others.
+
+3. Difference between final and finally?
+    final is a keyword, final is used to put restrictions in class methods and variables
+    if a class is marked as final then this class can not be inherited by another class.
+
+    finally is used on a try catch statement, its a block, finally  is used for exeception handling along
+    with try and catch blocks.
+
+4. how do you use overloading in your project?
+    I used overloading when I create my methods
+    one example on my current project we have listbox class I have created a
+                public class Listbox {
+
+                Select list;
+
+                public Listbox(Select list) {
+                    this.list = list;
+                }
+
+                public void select(int i) {
+                    this.list.selectByIndex(i);
+                }
+
+                public void select(String text) {
+                    this.list.selectByVisibleText(text);
+                }
+
+                public void deSelect(int i) {
+                    this.list.deselectByIndex(i);
+                }
+
+                public void deSelect(String text) {
+                    this.list.deselectByVisibleText(text);
+                }
+
+5. How do you migrate 18 million rows of data from one place to another?
+    it depends on the database type. it can be as complicated as eating spagetti
+
+
+6. What is the difference between functional tester and manual tester?
+(I guess the product owner thought they were different titles as I was mentioning either one time to time)
+        functional testing on my project is our smoke test. its covering the important aspects of our environment.
+        manual testing is what i normally do to understand my funcionality. to check and see if something
+        cant be automated or if something doesnt need automation.
+
+7. If there's an argument between you and the developer regarding a bug, who has the final say? (I said PO)
+    We had an instance in which my developer declined my bug. the reason is that because
+    my understand of the requirement was not relevant to his understanding. What we did to overcome
+    this argument was speak to our BA for clarification on requirement. maybe he understood the requirement
+    different to what I understood. So from that day on forward on every meeting we have for planning
+    we make sure to be clean and ask as many questions. At the end we will be the ones delivering the product.
+
+8. How do you resolve conflict between coworkers?
+    conflict is always there, For instance we had our collegue gihan whos temper was always on the way.
+    He would snap really quick if something did not go as he wanted. As a team we pointed out to him
+    the tools available to find a solution. there are so many tools online to take advantage of like stackoverflow
+    guru99 amoung other that provide some help. So he learned how to deal with his reactions now.
+
+9. How do you handle stress?
+    as you know there is always stress specially on IT. we have dead lines and we have limited time for testing.
+    you can ask my team mates my boss my wife and they always wonder how can i stay so calm. how can i be so relax
+    the reason is this. when i come to work i leave my bag of stress on the door. I start my morning fresh
+    i look at my schedule and my deadlines. i prioritize my goals based on what needs to be done.
+
+10. The sprint is ending very soon and you have to do release, but you found a minor issue, what would you do?
+(I said talk to the team or PO) And they said: But the product owner wants you to just close it, it's too late,
+we have to do the release.. (I said then it's up to whatever the PO says)
+    As a team member we have to evaluate the importance of this release. I would rather deliver a product well
+    done than a product half way done. for that I will stay up late nights after all we are a commited team
+    and we like to deliver what we promise.
+
+
+11. Tell us about a time where you took leadership role and led a group to do something at your work.
+    THank you Currently we are working on a project that involves testing our database. our PO
+    came to us in the middle of the sprint and told us to work on a different project. he needed that project to
+    be done within short period of time, we had another team also assissting us because this project had a time line
+    and what I did was I gather our team talked about the aproach we will take to complete this task. We organized based on
+    functionality and what needed priority. I was in charge of setting up meetings talking to our scrum master, our BA
+    creating tickets for team mates who needed assistance on clarifications. at the same time i was doing peer code review.
+    Like i mention In such a small period of time we can make so many mistakes. Therefore i stayed late to review the codes
+    to ensure our work was done good. at the same time i got calls from  a woman reminding me that I have a wife. so It was
+    exisiting and challenging. but we got it. ahh Also On my way home I make sure to grab some flowers for my wife.
+
+12. You have 2 user stories with same/high priority, how would you make sure to finish both of them in a timely manner?
+    organize my self and work 1 task at a time. I have seen people work on both tests at ones at the end they are rushing
+    to finish their code. because their mind is not focus on each user story but 2. so why make your life harder
+    I know i can acomplish my dead lines so I do it 1 at the time. before doing it I understand in dept
+
+13. How do you convince your team about a new tool/idea that you want to bring in to the team that everyone is against?
+        I have introduced Selenium Grid. they were using Sauce Labs and it was challenging specially for
+        testers. since we have to do it our selfs they did not like much the idea. After showing them a Demo and also
+        Explaining the set up and the benefits of doing it our selfs they loved it. Because we would configure our own
+        reports and also we would be able to launch it in different browsers and OS.
+
+14. Have you done demo?
+    I have conducted different types of Demo. because we have the resources I take advantage of what is given to me
+    one demo was my parallel execution and another was for a small project, I presented to my team our Functionality
+    as part of our training we conduct a Demo to help us get better proffesionally. when I join my team I introduced
+    so many ideas but due to time constraint we were only able to acomplish some. I have a big imagination as far as
+    project come and also different approches we can take.
+
+15. Do you only do testing or do you help with developers and/or BA with their job?
+    I am reliable when it comes to helping peers. On my current project we participate on different types of
+    meetings. My BA once asked me to review some of the user stories with him. now because I can provide my feedback
+    on testing side I helped him write test cases and learn the functionality.
+
+16. In your current project, do you believe everything can be automated? (I said no, that's why we have manual tester)
+    no not everything can be automated because we still have to manual test before we automate and that is where
+    we find a feature that can be automated or not. When i find a story or a functionality that cant be automated
+    I make sure to manually tested until i am satify and i automate what needs automation. Of course I can not go against
+    requirements if documentation says automate it I will automate it. But thats why we have our meetings our planning to
+    and thast why i like to participate in BA/PO meetings to also contribute my thoughts about what needs automation and
+    what not.
+
+17. Explain to us what is the definition of done?
+
+    Currently for my project when i finish my code i make sure its ....... need to work on this....
+
+
+18. How good is your math skills?
+    Its great. Rusted but I used to work for a bank long ago.
+
+19. How many environments do you have?
+    in my current job we have 5 at capital one i have dev enviroment, QA environement,regression environemt, pre-prod -
+    and production.
+
+20. When you are done with a certain task, do you review it others or just submit it? (correct answer is review it with whole team)
+    when i finish my task as a team we review our codes once its reviewd we submit it.
+
+ 1. Tell me about yourself?
+    Currently I am a senior automation Engenieer with capital one. I started my career as manual tester
+    something that caught my attention was the passion to grow. So I started doing automation after 1 year
+    Evolent, BCBS provided with so much support as far as growing and learning new tools. Currently on my project
+    I am working with BDD framework. using java as my core language, selenium and cucumber for my feature files.
+    maven, jenkins, testNG for testing, and I also worked with Test NG. Jira we use for our project management git for our
+    code repositories. for my api testing i am using restassured librarie and postman as manual testing tool as well as the
+    browser console. for database and backend i am using JDBC and for manual queries I use sql developer.
+
+    I currently hold a java, linux and Scrum Master certification. I like to challenge my self and i like to achieve goals
+    I like to motivate my team and and at the same time provide value.
+
+2. Whats your project?
+    my poject at capital one is for he user to be able to manipulate the settings preferences. What I am currently automating is
+    the setting for personal accounts, external accounts, and language. as a user they can configure the account also add external accounts
+    when ever data is enter it creates an API call. I make sure to automate on my feature file negative, positive scenario as well as api
+    and database.
+
+3. In the future do you willing to be a developer?
+    Becoming a developer is challenging your self to changes. I like challenge not only to be developer but
+    also to be BA/SMaster. i would like to learn as much as I can. Because understanding different roles different
+    views helps me be better at what i do. So if a change comes then I am open.
+
+3. What do you not like in automation? (I said SQL. He said. OK.. Lets start with SQL..)
+    I dont API testing. There are many things that can go wrong. normally because we are also dealing
+    with other API for instance credit card, API, Loan API, so we have to make sure
+    that the data get properly transfer when used. therefore i testing has to be rebust and at the same time
+    we have to finish it in time.
+
+4. There are two tables they supposed to have same data. How can you test it?
+    lets say its an API, what i do its i test data stored on the database against data entered.
+    first of all i test if my key values match, i have to test the data inside lets say my json response.
+
+    if its related to database i test with select minus. I make sure to check A and B and B and A
+
+
+5. There are two tables they supposed to have the same number of row. How can you test it?
+    SQL I use row count.
+
+6. There is a table. It has a first name, last name, salary, depID. I want to know the average salary of each department
+
+
+7. What is JOINS in SQL?
+    joins i use it when i query data from multiple tables, its useful when finding matching records and for that i use inner join
+    there is different types of joins: like inner join, left join, right, full join. self joins.
+
+
+8. Union, Union All
+    the difference between union and union all is when we use union it removes the duplicates and null values also it sorts it
+
+9. What is 'final' in java? When do you use it?
+    final we use it in a method or variable normally used to restrict a class
+
+10. OOP concepts in Java?
+    Encapsulation
+    Abstraction
+    Polymorphism
+    inheritance
+
+11. Reverse String method
+    String name = "alex"
+    string temp = new StringBuilder(""+name).reverse().toString();
+    System.out.println(temp);
+
+    String name = "alex";
+    for(int i = name.lenght()-1; i >=0; i--){
+        reverse = reverse+name.charAt(i);
+    }
+     System.out.println(rerse);
+
+
+
+12. How do you use Cucumber in your framework?
+    Cucumber enables the story and the acceptance criteria to be implemented
+    in a language that can be understood by any user.
+
+    the language we use is gherkin and each user story is
+
+
+
+
+======= INTERVIEW QUESTIONS ======
+
+What is important to you the employee?
+    people = whats important to me is my team mates. I will be with them all
+    day
+    stability
+    growth
+    networking
+
+What is important to you the employer?
+    thorny problems: Can you tell me what problems are you facing
+    unresolved challenges: What can i do to resolve that challenge.
+
+
+Why how did this position become available? did someone leave?
+    (AKA: are you good enough for ME?)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+stashop login negative scenarios
+All test cases for negative login scenarios should be in a separate class. Each scenario will be a different test method. Name of the method will be the name of the scenario.
+
+test scenario: wrong credentials test
+go to http://automationpractice.com (Links to an external site.)Links to an external site.
+
+try to login by entering a any wrong email (email must have a correct format) and any password
+
+verify that message Authentication failed. is displayed
+
+test scenario: invalid email test
+go to http://automationpractice.com (Links to an external site.)Links to an external site.
+
+try to login by entering a email with invalid format and any password
+
+verify that message Invalid email address. is displayed
+
+test scenario: blank email test
+go to http://automationpractice.com (Links to an external site.)Links to an external site.
+
+try to login by leaving the email field empty and entering any password
+
+verify that message An email address required. is displayed
+
+test scenario: blank password test
+go to http://automationpractice.com (Links to an external site.)Links to an external site.
+
+try to login by entering an email and leaving the password field blank
+
+verify that message Password is required. is displayed
+
+
+
+2. Prestashop login positive scenarios
+All test cases for positive login scenarios should be in a separate class. Each scenario will be a different test method. Name of the method will be the name of the scenario.
+
+test scenario: login test
+go to http://automationpractice.com (Links to an external site.)Links to an external site.
+
+register a new user. You have to generate a new email, first name, last name every time
+
+Sign out once the registration is complete
+
+Log back using the same information
+
+Verify that correct first name and last name is displayed on the top right
+

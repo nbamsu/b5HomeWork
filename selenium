@@ -1,0 +1,857 @@
+												-=Selenium=-
+
+Selenium Methods:
+
+	- get()
+			Syntax: get(url)
+			Example: driver.get();
+			Purpose: It will load a new web page in the current browser window. This is done using an http get operation, and the method will block until the load is complete.
+			Parameters: URL - The URL to load and it should be a fully qualified URL
+	-getCurrentUrl()
+			Syntax: getCurrentUrl()
+			Example: driver.getCurrentUrl();
+			Purpose: Gets a string representing the current URL that the browser is opened.
+			Returns: The URL of the page currently loaded in the browser
+	-getTitle()
+			Syntax: getTitle()
+			Example: driver.getTitle();
+			Purpose: Gets the title of the current web page.
+			Returns: The title of the current page, with leading and trailing white space stripped, or null if one is not already set
+	-findElements()
+			Syntax: findElements(By by)
+			Example: driver.findElements(By.xpath("//");
+			Purpose: Find all elements within the current page using the given mechanism.
+			Parameters: By - The locating mechanism to use
+			Returns: A list of all WebElements, or an empty list if nothing matches
+	-findElement()
+			Syntax: WebElement findElement(By by)
+			Example: driver.findElements(By.xpath("//");
+			Purpose: Find the first WebElement using the given method.
+			Parameters: By - The locating mechanism
+			Returns: The first matching element on the current page
+			Throws: NoSuchElementException - it will return exception if no matching elements are found
+	-findElement(locator).sendKeys(str):
+			Usage : Used to simulate typing into a web element.
+			Syntax :   void sendKeys(String str);
+			Return type : void (Nothing)
+			Parameters : String
+			Applicability : Text field, Text area
+	-click():
+			Usage : Used to click the particular web element.
+			Syntax : void click();
+			Return type : void (Nothing)
+			Parameters : Nothing
+			Applicability : Link, button, text field, radio button, checkbox
+	-clear() :
+			Usage : Used to clear the values of text entry fields like text field and text area
+			Syntax :   void clear()
+			Return type : void (Nothing)
+			Parameters : Nothing
+			Applicability : Text field, Text area
+	-getPageSource()
+			Syntax: getPageSource()
+			Example: driver.getPageSource();
+			Purpose: Get the source of the currently loaded page. If the page has been modified after loading (for example, by Javascript) there is no guarantee that the returned text is that of the modified page.
+			Returns: The source of the current page
+	-getTagName() :
+			Usage : Used to get the tag name of the web element
+			Syntax :   String getTagName();
+			Return type : String (The tag name of element)
+			Parameters : Nothing
+			Applicability : Any DOM element
+	-getAttribute() :
+			Usage : Used to get the value of any HTML attribute of the web element
+			Syntax :   String getAttribute(String attributeName);
+			Return type : String (The value of  passed attributeName for the element)
+			Parameters : String (HTML Attribute name like id, name, href etc.)
+			Applicability : Any DOM element
+	-getCssValue() :
+			Usage : Used to get the value of any CSS property of the web element.
+			Syntax :   String getCssValue(String cssPropertyName);
+			Return type : String (The value of  passed CSS property for the element)
+			Parameters : String (CSS property name like font-size, color etc.)
+			Applicability : Any DOM element
+	-getSize():
+			Usage : Used to get the size of the web element.
+			Syntax :   Dimension getSize();
+			Return type : Dimension class instance
+			Parameters : Nothing
+			Applicability : Any DOM element
+
+	-close()
+			Syntax: void close()
+			Example: driver.close();
+			Purpose: Close the current window, if there are multiple windows, it will close the current window which is active and quits the browser if it's the last window opened currently.
+	-quit()
+			Syntax: void quit()
+			Example: driver.quit();
+			Purpose: Quits this driver instance, closing every associated window which is opened.
+	-getWindowHandles()
+			Syntax: Set getWindowHandles()
+			Example: driver.getWindowHandles();
+			Purpose: Return a set of window handles which can be used to iterate over all the open windows of this Webdriver instance by passing them to switchTo().WebDriver.Options.window()
+			Returns: A set of window handles which can be used to iterate over all the open windows.
+	- getWindowHandle()
+			Syntax: String getWindowHandle()
+			Example: driver.getWindowHandle();
+			Parameter: Return an opaque handle to this window that uniquely identifies it within this driver instance. This can be used to switch to this window at a later date switchTo WebDriver.TargetLocator switchTo(). The next future commands will be performed to a different frame or window.
+			Returns: A Target Locator which can be used to switch or select a frame or window
+	-navigate()
+  			Syntax: WebDriver.Navigation navigate()
+			Example: driver.navigate.to("");
+			Purpose: An abstraction allowing the driver to access the browser's history and to navigate to a given URL.
+			Returns: A WebDriver.Navigation that allows the selection of what to do next
+	-Navigate.To(URL)
+			Method Name: navigate.to(URL)
+			Syntax: driver.navigate().to(URL);
+			Purpose: This methods Load a new web page in the current browser window. This is done using an HTTP GET operation, and the method will block until the load is complete.
+			Parameters: URL – It should be a fully qualified URL.
+	-Navigate.To(String)
+			Method Name: navigate.to(String)
+			Syntax: driver.navigate().to(String);
+			Purpose: This methods Load a new web page in the current browser window. It is an Overloaded version of to(String) that makes it easy to pass in a URL.
+			Parameters: URL String
+	-Navigate.Back()
+			Method Name: navigate().back()
+			Syntax: driver.navigate().back();
+			Purpose: To move back a single "item" in the web browser's history. And it will not perform any action if you are on the first page viewed.
+			Parameters: N/A
+	-Navigate.Forward()
+			Method Name: navigate().forward()
+			Syntax: driver.navigate().forward();
+			Purpose: To move a single "item" forward in the web browser's history. And it will not perform any action if we are on the latest page viewed.
+			Parameters: N/A
+	-Navigate.Refresh()
+			Method Name: navigate().refresh()
+			Syntax: driver.navigate().refresh();
+			Purpose: It refreshes the current web page
+			Parameters: N/A
+	-manage()
+			Syntax: WebDriver.Options manage()
+			Purpose: Gets the Option interface
+			Returns: An option interface
+	-submit()
+			1. If any form has submit button which has type = "button" then .submit() method will not work.
+			it will work if the type='submit'
+			2. If button Is not Inside <form> tag then .submit() method will not work.
+			ex:
+					<form>
+						<div>
+							<input type="submit">
+						</div>
+					</form>
+	-isEnabled() : boolean – This method is used to verify the state of the web element. Basically it checks whether the element is clickable or not. If the element is enabled it returns true. The return type is boolean and it accepts nothing as parameter.
+
+	-isDisplayed() : boolean – This method is used to verify the visibility/presence of a web element. If the element is displayed it returns true and if the element is not displayed or hidden it returns NoSuchExlementFound exception. The return type is boolean and it accepts nothing as parameter.
+
+	-isSelected() : boolean – This method verifies if the web element is selected or not. It is usually used with dropdowns, checkbox’s and radio buttons. The return type is boolean and it accepts nothing as parameter.
+-------------------------------------------------------------------------------------------------
+FindElement Method
+1- Findelement method will return Webelement object--> WebElement
+2- If we are not able to find the element with locators,
+findelement method will throw NoSuchElement exception
+3- If you have more than one matching element with your locator, find element method will get the first one
+FindElements Method
+1- It will return list of WebElements --> List<WebElement>
+2- If we are not able to find the element with locators,
+findelements method will return empty list
+
+
+
+
+Locators in Selenium:
+
+	-By CSS ID: find_element_by_id
+	-By CSS class name: find_element_by_class_name
+	-By name attribute: find_element_by_name
+	-By DOM structure or xpath: find_element_by_xpath
+
+		1) Absolute XPath
+		2) Relative XPath
+
+        *syntax: Xpath=//tagname[@attribute='value']
+
+				ex:
+				/carinventory/car[@type='race']/model
+				/carinventory/car[3]/model
+				/carinventory/car[@]
+      		// : Select current node.
+			Tagname: Tagname of the particular node.
+			@: Select attribute.
+			Attribute: Attribute name of the node.
+			Value: Value of the attribute.
+		*Single slash ‘/ ’
+			Single slash ( / ) start selection from the document node
+			It allows you to create ‘absolute’ path expressions
+		*Double Slash ‘// ’
+			Double slash ( // ) start selection matching anywhere in the document
+			It enables to create ‘relative’ path expressions
+	  ->Document Object Model
+	  ->works with xml documents
+	  ->XML- Extensible Markup Language
+	  ->Dynamic xpath methods:
+		contains()-
+		By using 'contains' function in XPath, we can extract all the elements which matches a particular text value.
+		Now, consider another example:
+			<input type="submit" id=" 1002-subscribe" value="Subscribe">
+
+		In this case you can write XPath as:
+			XPath - //input[contains(@id, ‘subscribe’)]
+
+		starts-with()-
+		For eg consider the HTML snippet:
+			<input type="submit" id=" submit_334350" value="Subscribe">
+
+			XPath - //input[starts-with(@id, ‘submit_’)]
+		ends-with()-
+		text()-
+		ex: "//h4/a[contains(text(),'SAP M')]"
+
+
+	-By link text: find_element_by_link_text
+	-By partial link text: find_element_by_partial_link_text
+	-By HTML tag name: find_element_by_tag_name
+	-By.CSSSelector()
+		-Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation semantics (the look and formatting) of a document written in a markup language such as HTML or XML.
+		-Syntax:
+		^=	input[id^='ctrl']-->if the ID of an element is ctrl_12, this will locate and return elements with ctrl at the beginning of the ID.
+		$=	input[id$='_userName']--> if the ID for an element is a_1_userName, this will locate and return elements with _userName at the end of the ID.
+		*=	Input[id*='userName']-->if the ID of an element is panel_login_userName_textfield, this will use the userName part in the middle to match and locate the element.
+	XPath: //div//a
+	CSS: div a
+
+	=>cant use text()
+	=>contains() is used with '*' sign
+	xpath://TagName[contains(@Attribute,'value')]
+	css: css=TagName[Attribute*='value']
+
+						   CSS                  XPath
+All Elements				*					//*
+All P Elements				p					//p
+All Child Elements			p>*					//p/*
+Element By ID				#foo				//*[@id=’foo’]
+Element By Class			.foo				//*[contains(@class,’foo’)]
+Element With Attribute		*[title]			//*[@title]
+First Child of All P		p>*:first-child		//p/*[0]
+All P with an A child		Not possible		//p[a]
+Next Element				p + *				//p/following-sibling::*[0]
+Previous Element			Not possible		//p/preceding-sibling::*[0]
+
+1- Differences between Xpath and CSS selector
+CSS Selector
+* CSS selector is faster than the xpath
+* CSS is more readable and writable
+* CSS can not handle the text() and index
+* CSS has no slash (like absolute / and relative //)
+* We can not navigate between parent and child using slashes
+tagname[attribute='value']
+Xpath
+* xpath is slow than css selector
+* xpath has more syntax and little complicated than css
+* Xpath can handle the text() and index numbers
+* We can navigate between parent and child using relative or absolute xpaths
+* Xpath has more functions than css selector
+//tagName[@attribute='value']
+
+
+
+
+
+
+
+
+
+__________________________________________________________________________________________________
+
+												-=Mozilla Firefox Driver=-
+
+Selenium Firefox Driver, also called GeckoDriver is a browser engine developed by Mozilla for many applications. It provides a link between test cases and the Firefox browser. Without the help of GeckoDriver, one cannot instantiate the object of Firefox browser and perform automated Selenium testing.
+if GeckoDriver is directly located in project, System.setProperty()is not necessary to define;
+			WebDriver driver = new FirefoxDriver();
+but in case if GeckoDriver is not in project, System.setProperty() is necessary to give a path to the project.
+
+													-=MAVEN=-
+
+Maven is Yiddish Word which means Accumulator of Knowledge. Maven is a tool which is used for building and managing Java Based Projects. Basically to put it in simple words is a way to manage dependency for Java Based Project.
+
+
+Maven is used to define project structure, dependencies, build, and test management. Using pom. xml(Maven) you can configure dependencies needed for building testing and running code. Maven automatically downloads the necessary files from the repository while building the project.
+MAVEN DEPENDENCIES
+SeleniumWebDriver
+WebDriverManger(bonigarcia)-helps to install chromeDriver,GeckoDDriver etc. it also maitains the driver version as well.
+
+													-=TestNG=-
+note:
+-Inside class we can have more than one Test annotation
+-Method names should be different if you have same parameter but we can use same name with different parameter (method overloading)
+-Test annotation will execute with ascending order of method name.
+-We can use multiple @Test annotations in a single TestNG file. By default, methods annotated by @Test are executed alphabetically, even if methods are not arranged alphabetically in the code.
+
+		=>Initially designed to enable unit testing only, now used for all kinds of testing.
+		=>Cannot do dependency testing.
+		=>Poor configuration control (setUp/tearDown).
+		=>Intrusive (forces you to extend classes and name your methods a certain way).
+		=>Static programming model (forces you to recompile unnecessarily).
+		=>The management of different suites of tests in complex projects can be very tricky.
+
+
+TestNG Annotations:
+	@Test: Marks a class or a method as a part of the test.
+	@BeforeMethod: A method which is marked with this annotation will be executed before every @test annotated method.
+	@AfterMethod: A method which is marked with this annotation will be executed after every @test annotated method.
+	@BeforeClass: A method which is marked with this annotation will be executed before first @Test method execution. It runs only once per class.
+	@AfterClass: A method which is marked with this annotation will be executed after all the test methods in the current class have been run
+	@BeforeTest: A method which is marked with this annotation will be executed before first @Test annotated method.
+	@AfterTest: A method which is marked with this annotation will be executed when all @Test annotated methods complete the execution of those classes which are inside <test> tag in testng.xml file.
+	@BeforeSuite: A method which is marked with this annotation will run only once before all tests in the suite have run
+	@AfterSuite: A method which is marked with this annotation will run once after execution of all tests in the suite have run
+	@BeforeGroups: This annotated method will run before the first test run of that specific group.
+	@AfterGroups: This annotated method will run after all test methods of that group completes its execution.
+	Some other TestNG Annotations, we need to discuss here are mentioned below:
+	@Parameters: This annotation is used to pass parameters to test methods.
+	Describes how to pass parameters to a @Test method.
+	The list of variables used to fill the parameters of this method.
+	@DataProvider: If we use @DataProvider annotation for any method that means you are using that method as a data supplier. The configuration of @DataProvider annotated method must be like it always return Object[][] which we can use in @Test annotated method. The @Test method that wants to receive data from this DataProvider needs to use a dataProvider name equals to the name of this annotation.
+	@Factory: Marks a method as a factory that returns objects that will be used by TestNG as Test classes. The method must return Object[ ].
+	@Listeners: This annotation is used with test class. It helps in writing logs and results.
+
+@Test
+	=>priority
+	Prioritisation of execution order is performed by using (priority=IntOrderNumber(starts from 1)).
+	if annotations don't have prioritisation, then no priority will run before (priority=1)
+	=>Enabled
+	Whether methods on this class/method are enabled.
+	if the valued of enabled parameter is equals to true, your test annotation will continue to run. If you make the value equals to false , then your test  annotaion will not run.
+		@Test(priority=1,enabled=true/flase)
+	=>alwaysRun
+	If set to true, this test method will always be run even if it depends on a method that failed.
+	=>
+
+
+TestNG Runners
+	if you want to run multiple classes in one click, we need to create testNG xml file.
+	In testNG xml file we can have suite of tests, inside the suite more than one test. inside
+	<?xml version="1.0" encoding="UTF-8" ?>
+	<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+	<suite name="Selenium Intro SmokeRunner">
+    	<test name="TestNG Runner">
+        	<classes>
+            	<class name="SelectClass.CarsCom"></class>
+            	<class name="TestNGIntro.TestNGPractice"></class>
+            	<class name="TestNGPractice.TestNGAnnotationsPractice"></class>
+        	</classes>
+    	</test>
+	</suite>
+
+ TestNG Annotations:
+
+Parameters @Test(priority=0)
+If you want the methods to be executed in a different order, use the parameter "priority". Parameters are keywords that modify the annotation's function.
+
+			-Parameters require you to assign a value to them. You do.this by placing a "=" next to them, and then followed by the value.
+			-Parameters are enclosed in a pair of parentheses which are placed right after the annotation like the code snippet shown below.
+
+ Soft Assert collects errors during @Test. Soft Assert does not throw an exception when an assert fails and would continue with the next step after the assert statement. Hard Assert: Hard Assert throws an AssertExceptionimmediately when an assert statement fails and test suite continues with next @Test.
+
+
+Multiple Parameters
+"alwaysRun" which can only be set to either "true" or "false." To use two or more parameters in a single annotation, separate them with a comma
+@Test(priority = 0, alwaysRun = true)
+
+
+How to hadle drop down box?
+if the tag is <select> use Select Class
+
+How many different ways can you select the option in select class?
+1.SelectByVisibleText()
+2.SelectByIndex()
+3.SelectByValue()
+
+Select dropdown = new Select(testDropDown);
+How to select an option from drop-down menu?
+
+WebDriver provides three ways to select an option from the drop-down menu.
+
+1. selectByIndex - It is used to select an option based on its index, beginning with 0.
+
+dropdown.selectByIndex(5);
+2. selectByValue - It is used to select an option based on its 'value' attribute.
+
+dropdown.selectByValue("Database");
+3. selectByVisibleText - It is used to select an option based on the text over the option.
+
+dropdown.selectByVisibleText("Database Testing");
+Multiple Select
+in select tag we need to have multiple attribute, means name of the attribute is multiple
+
+									ActionsClass
+mouse and keyboard
+Actions class
+Action interface
+
+=>Methods of Actions class:
+		-clickAndHold(WebElement element) - Clicks a web element at the middle(without releasing).
+		-moveToElement(WebElement element) - Moves the mouse pointer to the middle of the web element without clicking.
+		-release(WebElement element) - Releases the left click (which is in pressed state).
+		-build() - Generates a composite action
+		-perform() - it will perform for all your actions.
+		-contextClick() ---> right click
+		-doubleClick() ---> it will double click
+		-moveByOffSet(x, y) ---> it moves the mouse provided coordinates.
+		-clickAndHold() ---> it will click and hold the mouse in current location of mouse
+		-release()  ---> it will release the mouse in current location of mouse
+If We are using the perform() method from Action interface, need to use build() method.
+However, if the perform() is coming from Actions class, don't need to use the build().
+Keys ---> In selenium Keys is the enum values. Enum values are constant.
+Keys are representation of pressable keys that are not text.
+Keys.ARROW_DOWN
+Keys.ARROW_UP
+Keys.ARROW_LEFT
+Keys.ARROW_RIGHT
+Keys.SHIFT
+Keys.COMMAND
+Keys.CONTROL
+Keys.ENTER
+I can use the keys with Actions Class
+Or I can use the Keys with sendKey() method from weblement
+WebElement searchBox=driver.findElement(By.xpath("//a"));
+searchBox.sendKey("Selenium",Keys.ENTER);
+Actions actions=new Actions(driver);
+actions.keyDown(Keys.SHIFT).sendKey(searchBox,"selenium").keyUp(Keys.SHIFT).perform();
+actions.keyDown(Keys.SHIFT).sendKey(searchBox,"selenium").keyUp(Keys.SHIFT).build().perform();
+==============================================
+Switching Window Using Selenium
+Every window has unique Id to identify them.
+getWindowHandle()
+It will return the window Id belongs to current window. Id is String value.
+getWindowHandles()
+It will return the ids for all opened windows. Return type is Set<String>.
+switchTo()
+window()
+//a[.='Click Here'] ===> . is equals to text()
+CDwindow-DE1B3EA325EF31510BC9DFC4D1E1F275 --> which belongs the my first page
+
+									-=IFrame=-
+									HTML INSIDE HTML
+Handling of iFrames
+default frame=>driver.switchTo().defaultFrame();
+parent frame=>driver.switchTo().parentFrame();-->one step back to
+
+Ways to switch the frame:driver.switchTo().frame(...);
+1.by frame ID(String)
+2.by frame Name(String)
+3.by frame Index(int)
+4.by frame WebElement(driver.findElement())
+
+___________________________________________________________________________________________________
+
+			                      Page Object Model(POM)
+
+Page Object Model (POM) is a design pattern, popularly used in test automation that creates Object Repository for web UI elements.
+It helps make the code more readable, maintainable, and reusable.
+
+-->Page Factory	is a way to initialize the web element you want to interact with
+ initElelement()_>
+ PageFactory.initElelement(driver,this)
+
+
+ --------------------------------------------------------------------------------------------------
+							Singleton Design Pattern
+ singleton pattern is a software design pattern that restricts the instantiation of a class to one "single" instance.This is useful when exactly one object is needed to coordinate actions across the system.
+ 	-Ensure a class has only one instance, and provide a global point of access to it.
+ 	-Encapsulated "just-in-time initialization" or "initialization on first use".
+ 1. private static  instance variable of WebDriver
+ 2. you need to create private  construcor
+ 3. public method to access the inctance variable. we need to put one condition that will check our driver is instantiated or not. if it is already instatiated we will not instatiate one more tinme.
+
+ 										Parallel Testing
+Tools: TestNG, Selenium Grid, SauceLabs(not open source)
+if automation suite taking 1 hour and its required to run it in 2 or more browsers. so in this case automation script will run 2 test suits at the same time.
+
+
+										Soft assert
+Soft Assertions are the type of assertions that do not throw an exception when an assertion fails and would continue with the next step after assert statement.
+
+Hard Assert – Hard Assert throws an AssertException immediately when an assert statement fails and test suite continues with next @Test
+
+	The disadvantage of Hard Assert – It marks method as fail if assert condition gets failed and the remaining statements inside the method will be aborted.
+
+	To overcome this we need to use Soft Assert. Let’s see what is Soft Assert.
+
+Soft Assert – Soft Assert collects errors during @Test. Soft Assert does not throw an exception when an assert fails and would continue with the next step after the assert statement.
+
+	If there is any exception and you want to throw it then you need to use assertAll() method as a last statement in the @Test and test suite again continue with next @Test as it is.
+
+	SoftAssert softAssert=new SoftAssert();
+	softAsset.
+
+
+
+												Alert/pop ups
+1. OS system alerts/popups --->cant handle using Selenium, May be we can use the Robot class to handle it and robot class is coming from the Java
+2. HTML ---> find the web element and handle using the selenium
+3. JavaScript based ---> we need to convert the Alert class from selnium and we have 4 methods which is:
+ 	Accept,
+ 	Dismiss,
+ 	getText()
+ 	and sendKey()
+
+Alert alert=driver.switchTo().Alert();
+
+											File upload
+->Uploading files in WebDriver is done by simply using the sendKeys() method on the file-select input field to enter the path to the file to be uploaded.
+->WebDriver cannot automate downloading of files on its own.
+->The easiest way to download files using WebDriver is to use Wget.
+
+
+											JavaScriptExecutor
+JavaScriptExecutor Methods
+executeAsyncScript
+With Asynchronous script, your page renders more quickly. Instead of forcing users to wait for a script to download before the page renders. This function will execute an asynchronous piece of JavaScript in the context of the currently selected frame or window in Selenium. The JS so executed is single-threaded with a various callback function which runs synchronously.
+
+executeScript
+This method executes JavaScript in the context of the currently selected frame or window in Selenium. The script used in this method runs in the body of an anonymous function (a function without a name). We can also pass complicated arguments to it.
+
+The script can return values. Data types returned are
+
+Boolean
+Long
+String
+List
+WebElement.
+The basic syntax for JavascriptExecutor is given below:
+
+Syntax:
+
+JavascriptExecutor js = (JavascriptExecutor) driver;
+js.executeScript(Script,Arguments);
+Script – This is the JavaScript that needs to execute.
+Arguments – It is the arguments to the script. It's optional.
+
+
+ex:
+	//Navigate to new Page i.e to generate access page. (launch new url)
+		js.executeScript("window.location = 'http://demo.guru99.com/'");
+
+	//To generate Alert window using JavascriptExecutor. Display the alert message
+        js.executeScript("alert('Welcome to Guru99');");
+
+    //Perform Click on LOGIN button using JavascriptExecutor
+    	WebElement button =driver.findElement(By.name("btnLogin"));
+        js.executeScript("arguments[0].click();", button);
+
+    //Declare and set the start time
+        long start_time = System.currentTimeMillis();
+
+    //Call executeAsyncScript() method to wait for 5 seconds
+       	js.executeAsyncScript("window.setTimeout(arguments[arguments.length - 1], 5000);");
+
+    //Fetching the Domain Name of the site. Tostring() change object to name.
+        String DomainName = js.executeScript("return document.domain;").toString();
+        System.out.println("Domain name of the site = "+DomainName);
+
+    //Fetching the URL of the site. Tostring() change object to name
+        String url = js.executeScript("return document.URL;").toString();
+        System.out.println("URL of the site = "+url);
+
+    //Method document.title fetch the Title name of the site. Tostring() change object to name
+       String TitleName = js.executeScript("return document.title;").toString();
+       System.out.println("Title of the page = "+TitleName);
+
+    //Vertical scroll down by 600  pixels
+        js.executeScript("window.scrollBy(0,600)");
+
+    //To scroll till the bottom of the page
+    	je.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+
+    //Method scrolls till the view of an element
+    	 WebElement getStarted=driver.findElement(By.xpath("//h4[.='On-Campus Course']/following-sibling::div/a"));
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView(true);",getStarted);
+
+    //Method refreshes current page
+    	JavascriptExecutor je=(JavascriptExecutor)driver;
+        je.executeScript("history.go(0)");
+
+    //page state
+    	javascriptExecutor.executeScript("return document.readyState")
+
+ JavaScriptExecutor is used when Selenium Webdriver fails to click on any element due to some issue.
+
+		---> JavaScriptExecutor provides two methods "executescript" & "executeAsyncScript" to handle.
+		--->Executed the JavaScript using Selenium Webdriver.
+		--->Illustrated how to click on an element through JavaScriptExecutor, if selenium fails to click on element due to some issue.
+		--->Generated the 'Alert' window using JavaScriptExecutor.
+		--->Navigated to the different page using JavaScriptExecutor.
+		--->Scrolled down the window using JavaScriptExecutor.
+		--->Fetched URL, title, and domain name using JavaScriptExecutor.                  __________________________________________________________________________________________________________
+WebDriver regularly polls the browser for an element in the DOM model. There are a number of exceptional situations:
+	StaleElementReferenceException — if an item is available in the DOM at the time of the search, but after a while, at the time it is called, the DOM has changed.
+	NoSuchElementException — if the item is not in the DOM at the time of the call.(implicit wait)
+	ElementNotVisibleException — if the item was found in the DOM but not visible on the page.
+	MoveTargetOutOfBoundsException — if the item has changed coordinates.
+	TimeOutException-(explicit wait)
+
+
+
+				Selenium WebDriver provides three commands to implement wait in tests.
+
+										Implicitly Wait(import java.util.concurrent.TimeUnit;)
+Applies to all elements in a test script. No need to specify “ExpectedConditions” on the element to be located. Most effective when used in a test case in which the elements are located with the time frame specified in implicit wait.
+Implicit Wait directs the Selenium WebDriver to wait for a certain measure of time before throwing an exception. Once this time is set, WebDriver will wait for the element before the exception occurs.
+syntax:
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			it is dynamic wait, if the page loaded in 3 sec, rest of the 7 sec will be ignored
+		driver.manage().timeouts().pageLoadTimeout(10,TimeUnit.SECONDS);
+			it will wait all web elements driver is pointing .
+			pageLoadTimeout() limits the time that the script allows for a web page to be displayed. If the page loads within the time then the script continues. If the page does not load within the timeout the script will be stopped by a TimeoutException.
+		driver.manage().timeouts().setScriptTimeout(10,TimeUnit.SECONDS);
+			sets the query completion timeout limit for executeAsyncScript
+			sets the amount of time to wait for an asynchronous script to finish execution before throwing an error. If the timeout is negative, then the script will be allowed to run indefinitely.
+
+
+
+
+										Explicitly Wait
+							(import org.openqa.selenium.support.ui.ExpectedConditions)
+							(import org.openqa.selenium.support.ui.WebDriverWait)
+Applies only to specific elements as intended by the user.
+Must always specify “ExpectedConditions” on the element to be located.Most effective when used when the elements are taking a long time to load.
+By using Explicit Wait command, the WebDriver is directed to wait until a certain condition occurs before proceeding with executing the code.
+Setting Explicit Wait is important in cases where there are certain elements that naturally take more time to load. If one sets an implicit wait command, then the browser will wait for the same time frame before loading every web element. This causes an unnecessary delay in executing the test script.
+Syntax:
+		WebDriverWait wait = new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.locator)));
+
+In order to declare explicit wait, one has to use “ExpectedConditions”. The following Expected Conditions can be used in Explicit Wait.
+
+		alertIsPresent() ---> The expected condition waits for an alert box to appear.
+		Sample Code:
+		wait.until(ExpectedConditions.alertIsPresent()) !=null);
+
+
+		elementSelectionStateToBe()
+
+		elementToBeClickable(By locator) ---> The expected condition waits for an element to be clickable i.e. it should be present/displayed/visible on the screen as well as enabled.
+		Sample Code: wait.until(ExpectedConditions.elementToBeClickable(By.xpath(“//div[contains(text(),'COMPOSE')]”)));
+
+		elementToBeSelected()
+
+		frameToBeAvaliableAndSwitchToIt() --->The expected condition waits for a frame to be available and then as soon as the frame is available, the control switches to it automatically.
+		Sample Code:
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.id(“newframe”)));
+
+		invisibilityOfTheElementLocated(By locator)
+
+		invisibilityOfElementWithText(By locator, String text)
+
+		presenceOfAllElementsLocatedBy(By locator)
+
+		presenceOfElementLocated(By locator)
+
+		stalenessOf(WebElement element)
+
+		textToBePresentInElement(By locator, String text) ---> The expected condition waits for an element having a certain string pattern.
+		Sample Code:
+		wait.until(ExpectedConditions.textToBePresentInElement(By.xpath(“//div[@id= ‘forgotPass'”), “text to be found”));
+
+		textToBePresentInElementLocated()
+
+		textToBePresentInElementValue()
+
+		titleIs() ---> The expected condition waits for a page with a specific title.
+		Sample Code:
+		wait.until(ExpectedConditions.titleIs(“gmail”));
+
+		titleContains(String title)
+
+		visibilityOf(WebElement element)
+
+		visibilityOfAllElements()
+
+		visibilityOfAllElementsLocatedBy(By locator)
+
+		visibilityOfElementLocated()
+
+										Fluent Wait
+
+The Fluent Wait command defines the maximum amount of time for Selenium WebDriver to wait for a certain condition to appear. It also defines the frequency with which WebDriver will check if the condition appears before throwing the “ElementNotVisibleException”.	To put it simply, Fluent Wait looks for a web element repeatedly at regular intervals until timeout happens or until the object is found.
+Fluent Wait commands are most useful when interacting with web elements that can sometimes take more time than usual to load.
+Syntax:
+Wait<WebDriver> wait = new FluentWait(WebDriver reference)
+.withTimeout(DurationOf(SECONDS))---> total amount of time to wait
+.pollingEvery(DurationOf(SECONDS))--->range of interacting attemp with web element
+.ignoring(Exception.class);--->to handle an exception until it reaches the total amount of wait time
+
+WebElement element=wait.until(   <--- functional interface
+driver-> driver.findElement(By.locatorType("elementLocator")); <--- lambda expression
+
+or override apply method
+
+wait.until(new Function<WebDriver, WebElement>()){ <--- functional interface
+	@Override
+	public WebElement apply(WebDriver driver){
+	return driver.findElement(By.locatorType("elementLocation"))
+}
+}
+
+
+???????????????????????????????????????????????????????????????????????????????????????????????????
+Common Exceptions in Selenium WebDriver
+	-StaleElementReferenceException: says that a web element is no longer present in the web page. is not the same as ElementNotVisibleException. is thrown when an object for a particular web element was created in the program without any problem and however; this element is no longer present in the window. This can happen if there was a:
+			*Navigation to another page
+			*DOM has refreshed
+			*A frame or window switch
+	-NoSuchElementException: This exception is due to accessing an element which is not available on the page.occurs when WebDriver is unable to find and locate elements.
+	-NoSuchWindowException: is thrown when WebDriver tries to switch to an invalid window.
+	-NoSuchFrameException:When WebDriver is trying to switch to an invalid frame
+	-NoSuchAttributeException: While trying to get attribute value but the attribute is not available in DOM.
+	-NoAlertPresentException: If a user tries to handle an alert box but the alert is not present.is thrown when WebDriver tries to switch to an alert, which is not available.
+	-InvalidSelectorException:occurs when a selector is incorrect or syntactically invalid. This exception occurs commonly when XPATH locator is used.
+	-ElementNotVisibleException: If selenium tries to find an element but the element is not visible within the page. is thrown when WebDriver tries to perform an action on an invisible web element, which cannot be interacted with. That is, the web element is in a hidden state.
+	-ElementNotSelectableException: indicates that the web element is present in the web page but cannot be selected.
+	-TimeoutException:occurs when a command completion takes more than the wait time.
+	-WebDriverException: Exception comes when a code is unable to initialize WebDriver.
+	-NoSuchSessionException:  is thrown when a method is called after quitting the browser by WebDriver.quit(). This can also happen due to web browser issues like crashes and WebDriver cannot execute any command using the driver instance.
+	-
+_________________________________________________________________________
+Test Driven Development (TDD) is an iterative development process. Each iteration starts with a set of tests written for a new piece of functionality.
+
+______________________________________________________________________________________________________________________________
+
+														-=Cucumber=-
+										is BDD(Behavior Driven Development) framework
+														Gherkin language
+
+Gherkin language (Given, When, Then  , And, But, *)
+	In cucumber we have feature files where we define our steps in Gherkin Language
+	We have stepDefinitions package where we implement the code for our steps
+	We have runner package where we store our cucumber runner classes
+	Hook class-->TestBase
+	Pages
+
+Cucumber Dependencies
+	-Selenium
+	-Cucumber-Java
+	-Cucumber-JUnit
+	-JUnit(for assertions)
+	-WebDriverManager(Bonugarcia)
+
+For report use cucumber HTML report
+Each line that isn’t a blank line has to start with a Gherkin keyword, followed by any text you like. The only exceptions are the feature and scenario descriptions.
+The primary keywords are:
+
+			Feature  --->to provide a high-level description of a software feature, and to group related scenarios.
+			The first primary keyword in a Gherkin document must always be Feature, followed by a : and a short text that describes the feature.
+			You can add free-form text underneath Feature to add more description.These description lines are ignored by Cucumber at runtime, but are available for reporting (They are included by default in html reports).
+			Rule (as of Gherkin 6)
+			Example (or Scenario)
+			Given, When, Then, And, But for steps (or *)
+				Given - precondition
+				When - action
+				Then - verification
+				And - logical and
+				But - negative
+				* -
+			Background
+			Scenario Outline (or Scenario Template)
+			Examples
+			Annotations:@Given, @When, @Then(And, But, *)
+
+	Given step is used to set the context
+	When step is the action/ interaction with the system
+	Then step for representing the outcome
+	And step for extending the previous step
+	But step for more readability
+
+			""" ---> (Doc Strings)
+			| ---> (Data Tables)
+			@ ---> (Tags)
+			# ---> (Comments)
+
+												Proporties File
+In Selenium .properties files are mainly used to store GUI locators / elements, and also Global fields like database configuration details. it stores the data with key and value. extention of proporties file is '.proporties'
+'.properties' files are mainly used in Java programs to maintain project configuration data, database config or project settings etc. Each parameter in properties file are stored as a pair of strings, in key and value format, where each key is on one line. You can easily read properties from some file using object of type Properties.
+
+
+
+
++++++++++++++++++++++++++++++++
+@RunWith(Cucumber.class)
+@CucumberOptions(
+    features ="",   ----------------> feature file path
+    glue="",		----------------> step definition file path
+    monochrome = true, --------------> makes console more readable
+    dryRun=true       ---------------> without running the feature it will give the unimplemented steps
+        )
+
+@CucumberOptions annotation provides the same options as the cucumber jvm command line. for example: we can specify the path to feature files, path to step definitions, if we want to run the execution in dry mode or not etc.This is very helpful and importance if we are using IDE such eclipse only to execute our project.
+
+@Features: Features Options helps Cucumber to locate the Feature file in the project folder structure.All we need to do is to specify the folder path and Cucumber will automatically find all the ‘.features‘ extension files in the folder.
+
+@Glue: It is almost the same think as Features Option but the only difference is that it helps Cucumber to locate theStep Definition file. Whenever Cucumber encounters a Step, it looks for a Step Definition inside all the files present in the folder mentioned in Glue Option.
+
+@Monochrome: This option can either set as true or false (default value is false). If it is set as true, it means that the console output for the Cucumber test are much more readable. And if it is set as false, then the console output is not as readable as it should be. For practice just add the code ‘monochrome = true‘ in TestRunner class.
+
+@DryRun: This option can either set as true or false (default value is false). If it is set as true, it means that Cucumber will only check that every Step mentioned in the Feature File have corresponding code written in Step Definition file or not. So in case any of the function is missed in the Step Definition for any Step in Feature File, it will give us the message. So If you writing scenarios first and then implementing step definitions then add dryRun = true.
+
+
+@Tags : it helps us to organize and scenarios. we can run specific scenarios or features using these tags
+*and "@bla and @bla" == {"@bla","@bla"}
+*or "@bla or @blabla"--->all matching variants
+*not "@bla not @blabla"
+
+
+----------------------------------------------------------------------------------------------------------------
+Hooks class in my framework i have @Before and @After annotations, which will run before and after each scenario.
+
+@Before and @After annotations are comming from Cucumber class.
+
+@Befeore used to login to the page
+@After is used to take a screenshot after each scenario is failed
+
+
+
+												screenshot
+
+
+we want to take a screenshot after my scenario is failed.
+method: take ScreenShotAs();
+it is comming from the selenium
+
+												Background
+feature file before scenario we can use teh Background keyword then define your step. it will run before each scenario
+
+													Scenario Outline
+if you want to run same scenario with different data we need to use scenario outline
+
+if we have scenario outline we must use the example tag
+
+Scenario Outline: Name of the scenario
+Given
+When
+Then
+Examples:|string1|string2|string3|---->1st scenario data
+		 |string1|string2|string3|---->2nd scenario data
+		 |string1|string2|string3|
+ 		 |string1|string2|string3|
+ 		 									Data Table
+it will not run scenario multiple times. after datatable we can write another steps
+public void enterData(DataTable table){
+      //Initialize data table
+      List<list> data = table.raw();
+
+
+
+
+
+
+
+Data-Driven Framework: In data-driven frameworks, test data is separated from test scripts and stored in an external resource such as text file, excel spreadsheet, CSV file or database table.
+These frameworks provide the flexibility of executing the same test script with multiple data sets.
+
+
+Keyword Driven Framework: In keyword driven frameworks, the test logic is divided into keywords and functions. A sequence of keywords is used to define the test scripts and these keywords are further defined as functions to implement the desired behaviour.
+
+Hybrid: In hybrid frameworks, more than one framework is used to achieve the desired objectives. The combination should be designed in such a way that weaknesses of one framework are compensated with the strengths of other frameworks.
+
+Behaviour Driven: These frameworks allow the test cases to be written in such a format that they could be easily reviewed by non-technical stakeholders for a project for eg. Clients, Business Managers, Product Managers, Project Managers etc.

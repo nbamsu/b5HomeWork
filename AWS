@@ -1,0 +1,221 @@
+											AWS
+									AWS EC2 Machine
+1- We create the account in aws.
+	2- We create one EC2 machine
+	- 2016 windows t2.micro --> it is free
+	- Key pair(pem file) --> this one help us to generate the password for my EC2 machine.
+	- We download the Microsoft remote desktop for EC2 machine connection.
+	- We use the Public DNS (IPv4) for connection. We get the DNS from aws ec2 website.
+	- Username is Administrator and password generated with key pair pem file(insert pem file to generate password)
+	- We open the security for Internet explorer(Server Manager).
+	- We made local server + IE enhanced security configuration is off
+	- We downloaded the Chrome and Java
+	- We open the firewall for inbound and outbound rules. We added new rules for the post and make all the port open to use for both inbound and outbound.
+	3. We downloaded the Selenium Grid from Selenium website
+	- We need to navigate to location of jar files for grid
+	- We need to first lauch the hub using following command java -jar nameOfTheJarFile.jar -role hub
+	- We need to launch the node and connect the node with hub using following command
+	Java -jar nameOfTheFIle. Jar
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+	To Setup parallel execution in Selenium Grid:
+We need to download the jar file for Selenium Grid.
+We need to create the hub using selenium grid then we need to create the node and connect with hub.
+To create a hub in different PowerShell:
+java -jar selenium-server-standalone-3.141.59.jar -role hub port 7777
+To create a node in different PowerShell:
+java -jar selenium-server-standalone-3.141.59.jar -role node -hub http://localhost:7777/grid/register -port 7777
+NOTE: Make sure you local hub port and node port  must be same
+If it doesn't work use Command + C on both powerShell and run hub and node in order one more time
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Continuous Integration - every merge/pull request in BitBucket/Github/Gitlab (Git repository) is being automatically tested for:
+	- Compilation
+	- Unit test
+	- Coverage(how much of unit test is covered (40%-80%))
+Continues Delivery -  Continuously deliver the code/application/product to end user/ to production.
+Continues delivery steps:
+	- Once the code is merged it's in Dev env
+	- Unit tests are triggered
+	- On success the code is deployed to QA env
+	- Smoke/sanity/regression tests is trigger
+	- On success the code is deployed to STG env
+	- Regression/integration tests are triggered
+	- On success the code is displayed to PRD env
+Jenkins - is a  open source CI/CD tool developed by Hudson lab. It is cross platform and can be used on Windows, Linux, Mac OS. Its like a remote computer which is working 24/7.
+It has a features like:
+	- Change Support
+	- Email integration
+	- It has a lot of plugins, one of them is Cucumber plugin
+	- Jira integration plugin
+ Alternatives to Jenkins:
+	- Microsoft Azure:
+	                  - all in house software:
+	                             - git repo(github, bitBucket, gitlab)
+	                             - jira
+	                             - ci/cd(Azure DevOPs)
+	- Gitlab CI/CD
+	- Circle CI(new)
+	- Travis CI
+	- JetBrain TeamCity
+	- BuildBot
+Mvn verify skipTest to run your  report
+Mvn test -DfailIFNoTest = false
+Steps to run Jinkins:
+	1. java -jar jenkins.war --enable-future-java
+	2. java -jar jenkins.war --enable-future-java --httpPort=9090
+	3. Save provided password
+	4. Create account
+	5. Open localhost:9090
+Jenkins initial setup is required. An admin user has been created and a password generated.
+Please use the following password to proceed to installation:
+444b61fe06574e6db7e8bb6c0433f157
+This may also be found at: /Users/nancyb/.jenkins/secrets/initialAdminPassword
+/Users/nancyb/.jenkins/secrets/initialAdminPassword
+Localhost:9090
+Jinkins username: admin
+           password: admin
+
+
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Jenkins units:
+	- Jobs - smallest jenkins unit
+	- Pipelines - a collection/set of linked to each other jenkins jobs
+Jenkins Pipeline - is a chain of jenkins jobs connected to each other.
+Pipeline can be created using
+	-  Pipeline plugin
+	- Jenkins file(.jenkinsfile)(it's a txt, properties file)
+Pipeline plugin gives us an opportunity to trigger one job from another.
+Jenkins file - we code a Jenkins job specification in Groovy DSL (Domain Specific Language)
+If you have small amount of jobs its better to use Pipeline plugin
+But if you have a large project with a lot of job it's better to use Jinkins file.
+Job contains of builds
+Smoke test job
+Regression test job
+QA deployment job
+STG deployment job
+SIT job
+Trigger a job - start job
+Terminate a job - stop job
+SCM - Source Code Management(git)
+Subversion - svn
+Crontab  formula - H****(minute- hour-day(month)-month-date(week))
+Cron tab formula is used for scheduling a job trigger:
+*****
+*- minute
+*- hour
+*- day of the month
+*- month
+*- day of the week
+MINUTE (0-59), HOUR (0-23), DAY (1-31), MONTH (1-12), DAY OF THE WEEK (0-6)
+Echo and "yourMessage"- to print in console
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Report setup
+1 Download to EC2 machine :
+	- Jenkins
+	- Maven (Binary zip version)
+	- Git
+	2. Manage Jenkins
+	- Global Tool Configuration
+	- Maven Configuration -> File path -> C:\Users\Administrator\Downloads\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin     -> (make sure you unzip your maven apache file)
+	- Default global settings provider -> use default maven global settings
+	- GIT -> Path -> C:\Program Files\Git\bin\git.exe
+	- MAVEN -> Name -> Maven 3
+	- Maven HOME -> C:\Users\Administrator\Downloads\apache-maven-3.6.3-bin\apache-maven-3.6.3\
+	- CHECK Install automatically box
+	- Apply and Save
+	3. Create SmokeTestJob
+	- Add description
+	- Add git repository
+	- In Build Maven version add Maven 3
+	- In Build Goals add Test -DskipTests
+	- Build -> Settings file -> Use default Settings file
+	- POST BUILD ACTION -> File include pattern -> **/cucumber.json*
+	- Apply and Save
+
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 						AWS EC2(Amazon Web Services Elastic Compute Cloud)
+
+EC2 instance is a virtual server in Amazons elastic compute cloud for running applications on the Amazon Web Services infrastructure
+
+Hub will be main computer in Selenium grid
+Node wil
+
+
+
+
+										AWS s3
+When planning on getting your data into the cloud as a part of an application migration or a data center shutdown, you will run into the hard limits of data transport. When your Internet speeds are not enough to keep up with your data migration plan, it’s time to consider AWS Snowball. The Snowball appliance allows you to move archives, data lakes, and whatever data you have at faster-than Internet speeds right into Amazon S3 buckets. From Amazon S3, data can be archived into Glacier or analyzed by other services such as AWS Redshift or EMR. This implementation guide will get you started with AWS Snowball's quick, simple, and secure process for migrating large amounts of data into AWS.
+
+Transfer your data onto the Snowball using the client. Then ship the Snowball back to AWS. The integrated E-Ink label on the Snowball makes this easy for you by automatically updating with the return address. There is no packaging necessary, as the Snowball is its own shipping container.
+
+See your data securely imported into the cloud and stored in Amazon S3. When we receive the Snowball from you, we will import your data into Amazon S3 buckets. After the import is completed, the appliance is erased for your protection in accordance with NIST media sanitation standards.
+
+										Selenium Grid
+
+1-download selenium standalone package
+2-start hub java -jar selenium-server-standalone-<version>.jar -role hub
+This would start the hub automatically using port 4444 by default. Testers can change the default port by adding an optional parameter port, using
+-host <IP | hostname>
+3-Start Nodes
+java -jar selenium-server-standalone-<version>.jar -role node -hub https://localhost:4444/grid/register
+When -role option that is provided is not specified, and it is not the hub, the default port is 5555. So, it is important to define the -role to be a node in this case.
+4-Configure nodes
+When testers start the nodes, by default, it allows 11 browsers, i.e., 5 Firefox, 5 Chrome, and 1 Internet Explorer for concurrent use. It also allows testers to conduct a maximum of 5 concurrent tests by default.
+
+Testers can change this and other browser settings, by configuring nodes. This can be done by passing parameters to each of the -browser switches that represent a node, based on the parameters.
+
+As soon as the -browser parameter is used, the default browser settings shall be ignored and only the parameters that are specified in the command line shall be used.
+
+Let us understand this with an example to set 4 Firefox version 4 nodes on a Windows machine.
+-browser browserName=firefox,version=4,maxInstances=4,platform=WINDOWS
+-browser browserName=firefox,version=3.6,firefox_binary=/home/myhomedir/firefox36/firefox,maxInstances=5,platform=WINDOWS -browser browserName=firefox,version=4,firefox_binary=/home/myhomedir/firefox4/firefox,maxInstances=4,platform=WINDOWS
+5-Using Selenium Grid to run tests
+
+
+Hub is a server that accepts the access requests from the WebDriver client, routing the JSON test commands to the remote drives on nodes. It takes instructions from the client and executes them remotely on the various nodes in parallel
+Node is a remote device that consists of a native OS and a remote WebDriver. It receives requests from the hub in the form of JSON test commands and executes them using WebDriver
+
+Testers should use Selenium Grid in the following circumstances:
+
+To run tests on multiple browsers and their versions, different devices, and operating systems
+To reduce the time that a test suite takes to complete a test
+
+
+Selenium Grid gives the flexibility to distribute your test cases for execution.
+Reduces batch processing time.
+Can perform multi-browser testing.
+Can perform multi-OS testing.
+
+Hub: Hub is the central point to the entire GRID Architecture which receives all requests. There is only one hub in the selenium grid. Hub distributes the test cases across each node.
+
+Node: There can be multiple nodes in Grid. Tests will run in nodes. Each node communicates with the Hub and performs test assigned to it.
+
+
+
++++++++++++++++++++++++++++++++++++++++++
+Step 1: Download Selenium Server jar file from Selenium’s official website which is formerly known as Selenium RC Server and save it at any location on the local disk.
+
+URL of selenium HQ: http://www.seleniumhq.org/download/
+
+Step 2: Open the command prompt and navigate to a folder where the server is located. Run the server by using below command
+
+java -jar selenium-server-standalone-2.41.0.jar -role hub
+
+The hub will use the port 4444 by default. This port can be changed by passing the different port number in command prompt provided the port is open and has not been assigned a task.
+
+Status can be checked by using the web interface: http://localhost:4444/grid/console
+
+Step 3: Go to the other machine where you intend to setup Nodes. Open the command prompt and run the below line.
+
+java -jar selenium-server-standalone-2.41.0.jar -role node -hub
+http://localhost:4444/grid/register -port 5556
+Run the selenium server in other machines to start nodes.
+++++++++++++++++++++++++++++++++++++++++++++
